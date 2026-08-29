@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "rosemont-portal",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "5240", "--directory", "C:\\Users\\RamzyAzar\\.rp-serve"],
+      "port": 5240,
+      "url": "http://localhost:5240"
+    }
+  ]
+}

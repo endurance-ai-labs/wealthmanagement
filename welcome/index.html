@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosemont Partners — Private Wealth Platform</title>
+<meta name="description" content="One governed system where the client statement, the adviser's book, the investment committee's research, the trading blotter, the fee run and the compliance file all read the same records.">
+<meta property="og:site_name" content="Rosemont Partners">
+<meta property="og:title" content="Rosemont Partners — Private Wealth Platform">
+<meta property="og:description" content="Client reporting, portfolio operations, global market research, planning and firm governance in one owned system. Demonstration environment by Endurance AI Labs.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="/wealthmanagement/assets/brand/rosemont-mark.svg">
+<style>
+/* ============================================================
+   Rosemont Partners — public landing
+   Institutional register: hairlines, squared corners, no
+   shadows, one accent. Self-contained.
+   ============================================================ */
+:root{
+  --ink:#16222e; --body:#3b4755; --muted:#6d7887; --hint:#98a1ad;
+  --slate:#1f3d5c; --slate-soft:rgba(31,61,92,.07); --slate-line:rgba(31,61,92,.22);
+  --claret:#8a2f3f; --brass:#94793f;
+  --bg:#fbfcfd; --bg2:#ffffff; --tint:#f3f5f8;
+  --line:#e4e8ee; --line-soft:#eef1f5;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --mono:ui-monospace,"Cascadia Mono","SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--body);line-height:1.62;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+a{color:var(--slate);text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 30px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--claret)}
+.eyebrow::before{content:'';width:6px;height:6px;background:var(--claret)}
+h2.sec{font-family:var(--serif);font-size:clamp(25px,3.2vw,36px);font-weight:400;letter-spacing:-.01em;
+  color:var(--ink);line-height:1.16;margin:12px 0 14px;text-wrap:balance}
+p.lede{font-size:16px;color:var(--muted);max-width:64ch}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(251,252,253,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:66px}
+.mark{display:flex;align-items:center;gap:11px;white-space:nowrap}
+.mark svg{width:32px;height:32px;flex:none}
+.mark .w{font-family:var(--serif);font-size:18px;color:var(--ink);line-height:1}
+.mark .w span{color:var(--claret)}
+.mark small{display:block;font-family:var(--mono);font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--hint);margin-top:4px}
+.nav-links{margin-left:auto;display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:12.5px;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+@media (max-width:820px){.nav-links a:not(.btn){display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:10px 20px;
+  border:1px solid var(--line);color:var(--ink);background:var(--bg2);white-space:nowrap}
+.btn:hover{border-color:var(--slate);color:var(--slate)}
+.btn.pri{background:var(--slate);border-color:var(--slate);color:#fff}
+.btn.pri:hover{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding:74px 0 56px;border-bottom:1px solid var(--line)}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,58px);font-weight:400;line-height:1.08;
+  letter-spacing:-.015em;color:var(--ink);max-width:19ch;margin:16px 0 18px;text-wrap:balance}
+.hero p{font-size:17px;color:var(--muted);max-width:60ch}
+.hero .cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border:1px solid var(--line);
+  margin-top:46px;background:var(--bg2)}
+.stat{padding:18px 20px;border-right:1px solid var(--line-soft)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+.stat span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--hint);margin-top:8px}
+
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:32px}
+.card{background:var(--bg2);padding:22px 24px}
+.card h3{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:7px}
+.card p{font-size:13px;color:var(--muted)}
+.card .n{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--brass);display:block;margin-bottom:9px}
+
+.modules{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:32px}
+.mod{background:var(--bg2);padding:16px 18px;display:block}
+.mod:hover{background:var(--tint)}
+.mod b{display:block;font-size:13px;color:var(--ink);margin-bottom:4px}
+.mod span{font-size:11.5px;color:var(--muted);line-height:1.45;display:block}
+
+table.flow{width:100%;border-collapse:collapse;margin-top:28px;font-size:13px;background:var(--bg2);border:1px solid var(--line)}
+table.flow th{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--tint)}
+table.flow td{padding:11px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+table.flow tr:last-child td{border-bottom:0}
+table.flow td b{color:var(--ink)}
+
+.close{padding:74px 0;text-align:center;border-bottom:1px solid var(--line)}
+.close h2{font-family:var(--serif);font-size:clamp(27px,3.6vw,40px);font-weight:400;color:var(--ink);
+  max-width:20ch;margin:14px auto 16px;line-height:1.15}
+.close p{max-width:56ch;margin:0 auto 26px;color:var(--muted)}
+footer{padding:34px 0 54px;font-size:11.5px;color:var(--hint)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+  <a class="mark" href="/wealthmanagement/welcome/">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30.5" fill="none" stroke="#94793F" stroke-width="1.6"/>
+      <circle cx="32" cy="32" r="23" fill="none" stroke="#8A2F3F" stroke-width="1.6"/>
+      <path d="M32 9.2 L39.5 24.4 L56.3 26.8 L44.1 38.7 L47.0 55.4 L32 47.5 L17.0 55.4 L19.9 38.7 L7.7 26.8 L24.5 24.4 Z"
+        fill="none" stroke="#8A2F3F" stroke-width="1.4" stroke-linejoin="round" opacity=".55"/>
+      <circle cx="32" cy="32" r="6" fill="#8A2F3F"/></svg>
+    <span class="w">Rosemont <span>Partners</span><small>Private Wealth</small></span>
+  </a>
+  <div class="nav-links">
+    <a href="#platform">Platform</a>
+    <a href="#modules">Modules</a>
+    <a href="#governance">Governance</a>
+    <a class="btn pri" href="/wealthmanagement/?enter=1">Enter the portal</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">Demonstration environment</span>
+  <h1>One system your statements, your research and your examiner all agree with.</h1>
+  <p>Rosemont Partners runs $8.4&nbsp;billion for 612 families and institutions on a single governed platform.
+  The client's quarterly report, the adviser's book, the investment committee's research, the trading blotter,
+  the quarterly fee run and the compliance file read the same records. Not six vendors and a reconciliation
+  scramble at quarter end.</p>
+  <div class="cta">
+    <a class="btn pri" href="/wealthmanagement/?enter=1">Enter the portal &rarr;</a>
+    <a class="btn" href="#modules">See the modules</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>$8.4B</b><span>Discretionary AUM</span></div>
+    <div class="stat"><b>612</b><span>Households</span></div>
+    <div class="stat"><b>98</b><span>Benchmarks tracked</span></div>
+    <div class="stat"><b>70</b><span>Funds researched</span></div>
+    <div class="stat"><b>25</b><span>Vehicle types</span></div>
+    <div class="stat"><b>9</b><span>Approval chains</span></div>
+  </div>
+</div></header>
+
+<section id="platform"><div class="wrap">
+  <span class="eyebrow">The problem</span>
+  <h2 class="sec">Most firms this size run on six systems that disagree.</h2>
+  <p class="lede">Portfolio accounting says one thing, the CRM another, the planning tool a third. The quarterly
+  report is assembled by hand. The fee run is a spreadsheet. Nobody can answer a simple question without opening
+  four tabs, and the answer changes depending on who you ask.</p>
+
+  <div class="grid3">
+    <div class="card"><span class="n">01</span><h3>Every number derives</h3>
+      <p>A household's value is the sum of its accounts, which is the sum of its positions, which is the sum of
+      its tax lots. Revenue is the fee schedule applied to assets. Nothing is typed in twice, so nothing can
+      disagree.</p></div>
+    <div class="card"><span class="n">02</span><h3>Permissions are real</h3>
+      <p>An adviser sees their own book. The compliance officer sees the register. The client sees one household
+      and nothing else. The data layer enforces it, not the interface.</p></div>
+    <div class="card"><span class="n">03</span><h3>Approvals are controls</h3>
+      <p>A billing run, a policy change, a block trade, a report release: each moves through a role-gated chain
+      that will not advance without the right signature. That is the record an examiner asks for.</p></div>
+  </div>
+</div></section>
+
+<section id="modules"><div class="wrap">
+  <span class="eyebrow">Twenty-five modules</span>
+  <h2 class="sec">The whole practice, in one place.</h2>
+  <p class="lede">Client relationships, portfolio operations, global research, planning and firm governance.
+  Each links to the next, because in a real firm they are the same work.</p>
+
+  <div class="modules">
+    <a class="mod" href="/wealthmanagement/?enter=1"><b>Command Center</b><span>Firm assets, flows, roll-forward and what needs you today</span></a>
+    <a class="mod" href="/wealthmanagement/clients/"><b>Client Book</b><span>Every family's real world: career, property, held-away assets, what is coming</span></a>
+    <a class="mod" href="/wealthmanagement/households/"><b>Household Book</b><span>The register: assets, flows, reviews and standing</span></a>
+    <a class="mod" href="/wealthmanagement/households/household/"><b>Household Detail</b><span>Eleven tabs from performance to tax lots to the family balance sheet</span></a>
+    <a class="mod" href="/wealthmanagement/reporting/"><b>Reporting Center</b><span>Quarterly package builder and the four-step release chain</span></a>
+    <a class="mod" href="/wealthmanagement/documents/"><b>Document Vault</b><span>Statements, tax forms, agreements and retention classes</span></a>
+    <a class="mod" href="/wealthmanagement/meetings/"><b>Meeting Desk</b><span>Preparation packs that assemble themselves, and the actions that follow</span></a>
+    <a class="mod" href="/wealthmanagement/models/"><b>Models &amp; Allocation</b><span>Eight models, capital market assumptions, sleeve funds, live dispersion</span></a>
+    <a class="mod" href="/wealthmanagement/trading/"><b>Trading &amp; Rebalancing</b><span>Drift monitor, tax-aware proposals, blocks and best execution</span></a>
+    <a class="mod" href="/wealthmanagement/performance/"><b>Performance</b><span>GIPS-format composites and Brinson attribution</span></a>
+    <a class="mod" href="/wealthmanagement/risk/"><b>Risk Analytics</b><span>Stress tests, factor exposures, concentration, liquidity ladder</span></a>
+    <a class="mod" href="/wealthmanagement/markets/"><b>Global Markets</b><span>Ninety-eight benchmarks, the Treasury curve, credit spreads, macro</span></a>
+    <a class="mod" href="/wealthmanagement/funds/"><b>Fund Research</b><span>Seventy funds across twenty-five vehicle types, screened and scored</span></a>
+    <a class="mod" href="/wealthmanagement/funds/fund/"><b>Fund Tearsheet</b><span>Terms, returns, risk, exposure, tax and operational due diligence</span></a>
+    <a class="mod" href="/wealthmanagement/managers/"><b>Manager Due Diligence</b><span>Six-stage workflow and the memo the committee votes on</span></a>
+    <a class="mod" href="/wealthmanagement/committee/"><b>Investment Committee</b><span>House views, assumptions, approved list, minutes with votes</span></a>
+    <a class="mod" href="/wealthmanagement/private/"><b>Private Markets</b><span>Commitments, calls, the J-curve and the pacing model</span></a>
+    <a class="mod" href="/wealthmanagement/planning/"><b>Wealth Planning</b><span>Goals and a Monte Carlo engine with live drivers</span></a>
+    <a class="mod" href="/wealthmanagement/tax/"><b>Tax &amp; Estate</b><span>Harvesting, gain budget, Roth conversion, gifting, estate structure</span></a>
+    <a class="mod" href="/wealthmanagement/revenue/"><b>Revenue &amp; Billing</b><span>Schedules, the quarterly run and its approval chain</span></a>
+    <a class="mod" href="/wealthmanagement/growth/"><b>Growth &amp; Pipeline</b><span>Prospects, centres of influence and net new assets</span></a>
+    <a class="mod" href="/wealthmanagement/compliance/"><b>Compliance</b><span>Forty-five register items with owner, date, status and evidence</span></a>
+    <a class="mod" href="/wealthmanagement/operations/"><b>Operations</b><span>Reconciliation, corporate actions, onboarding pipeline</span></a>
+    <a class="mod" href="/wealthmanagement/team/"><b>Team &amp; Capacity</b><span>Adviser capacity, service standards, succession</span></a>
+    <a class="mod" href="/wealthmanagement/brain/"><b>Rosemont Brain</b><span>Ask the live data a question and get an answer the pages agree with</span></a>
+  </div>
+</div></section>
+
+<section id="governance"><div class="wrap">
+  <span class="eyebrow">Governance</span>
+  <h2 class="sec">Nine chains that will not advance without a signature.</h2>
+  <p class="lede">Each step is gated to a role. Sign in as that person and the button appears; sign in as anyone
+  else and you see who it is waiting on, with a nudge you can send them.</p>
+
+  <table class="flow">
+    <thead><tr><th style="width:30%">Chain</th><th>Steps</th></tr></thead>
+    <tbody>
+      <tr><td><b>New household onboarding</b></td><td>Client service &rarr; Adviser &rarr; AML and KYC &rarr; Custodian opened &rarr; Model assigned</td></tr>
+      <tr><td><b>Investment policy change</b></td><td>Adviser drafts &rarr; CIO review &rarr; Client signature</td></tr>
+      <tr><td><b>Block trade above threshold</b></td><td>Portfolio manager &rarr; Head of trading &rarr; Best-execution review &rarr; Released</td></tr>
+      <tr><td><b>Quarterly billing run</b></td><td>Operations calculates &rarr; CFO review &rarr; Fee reasonableness &rarr; Released</td></tr>
+      <tr><td><b>Client report release</b></td><td>Client service assembles &rarr; Adviser reviews &rarr; CIO signs commentary &rarr; Compliance review</td></tr>
+      <tr><td><b>Approved-list addition</b></td><td>Analyst memo &rarr; Director of research &rarr; Committee vote &rarr; CIO signs</td></tr>
+      <tr><td><b>Capital call funding</b></td><td>Notice received &rarr; Source confirmed &rarr; Client authorises &rarr; Wire released</td></tr>
+      <tr><td><b>Model change</b></td><td>Proposal &rarr; Research review &rarr; CIO approves &rarr; Implementation plan</td></tr>
+      <tr><td><b>Trade error resolution</b></td><td>Identified &rarr; Root cause &rarr; Compliance review &rarr; Client made whole</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<div class="close"><div class="wrap">
+  <span class="eyebrow">Built by Endurance AI Labs</span>
+  <h2>See it with your own book behind it.</h2>
+  <p>This environment runs on entirely synthetic data. The same platform, pointed at real records, is how a firm
+  stops reconciling and starts operating.</p>
+  <a class="btn pri" href="/wealthmanagement/?enter=1">Enter the portal &rarr;</a>
+</div></div>
+
+<footer><div class="wrap">
+  <span>Rosemont Partners, LLC is a fictional firm. Every household, holding, fund, person, document and figure
+  in this environment is synthetic. Index and benchmark names are real; the levels attached to them are not.
+  Nothing here is investment, tax or legal advice.</span>
+  <span>Endurance AI Labs &middot; 2026</span>
+</div></footer>
+
+</body>
+</html>
