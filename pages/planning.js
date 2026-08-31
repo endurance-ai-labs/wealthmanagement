@@ -98,7 +98,7 @@ function render() {
   </div>
 
   <div class="demo-grid demo-two">
-    ${panel("Projection", `<canvas id="mcChart" height="220"></canvas>
+    ${panel("Projection", `<div class="rp-chart" style="height:220px"><canvas id="mcChart"></canvas></div>
       <div class="rp-note" style="margin-top:10px">The shaded band is the tenth to ninetieth percentile of a
       thousand paths; the line is the median. Spending grows with inflation each year. A plan should be built
       to survive the bottom of the band, not to celebrate the top of it.</div>`, { k: "1,000 paths" })}

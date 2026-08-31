@@ -513,6 +513,25 @@ function seedRand(seedStr) {
   };
 }
 
+/* Chart defaults, applied once per page before anything is drawn.
+   Charts animate in by default, which means they render as an empty box
+   wherever animation frames do not run: a background tab, a throttled
+   window, or a viewer who has asked for reduced motion. Where motion is
+   not wanted, draw the final state immediately instead. */
+function applyChartDefaults() {
+  if (typeof Chart === "undefined") return;
+  const reduced = window.matchMedia
+    && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduced) Chart.defaults.animation = false;
+  /* Match the portal's own typography rather than the library default. */
+  try {
+    Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    Chart.defaults.font.size = 11;
+    Chart.defaults.color = getComputedStyle(document.body)
+      .getPropertyValue("--color-text-muted").trim() || "#6d7887";
+  } catch (e) {}
+}
+
 /* =========================================================
    PAGE BOOT
    Every page calls boot(). It renders the chrome, stops if
@@ -522,6 +541,7 @@ function seedRand(seedStr) {
 function boot(opts, fn) {
   RPNav.renderTopbar(opts || {});
   if (!isSignedIn()) return;
+  applyChartDefaults();
   const app = $("#app");
   try {
     fn(app);

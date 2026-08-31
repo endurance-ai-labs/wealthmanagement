@@ -167,7 +167,7 @@ function allocationPanel(positions, title) {
   const total = positions.reduce((s, p) => s + p.value, 0);
   return panel(title, `
     <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
-      <div style="flex:0 0 190px;max-width:100%"><canvas id="allocChart" height="190"></canvas></div>
+      <div style="flex:0 0 190px;max-width:100%"><div class="rp-chart" style="height:190px"><canvas id="allocChart"></canvas></div></div>
       <div style="flex:1 1 320px;min-width:0">
         ${alloc.map((a) => `
           <div class="rp-alloc">
@@ -298,14 +298,14 @@ function clientHome() {
 
   <div class="demo-grid demo-two">
     ${panel("Growth of your portfolio", `
-      <canvas id="growthChart" height="150"></canvas>
+      <div class="rp-chart" style="height:150px"><canvas id="growthChart"></canvas></div>
       <div class="rp-note" style="margin-top:10px">Three years, net of all fees, indexed to 100 at the start.
       Your blended benchmark is the weighted return of the market indices behind each part of your allocation.</div>`,
       { k: "Three years, net" })}
 
     ${panel("How your money is invested", `
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:0 0 170px"><canvas id="allocChart" height="170"></canvas></div>
+        <div style="flex:0 0 170px"><div class="rp-chart" style="height:170px"><canvas id="allocChart"></canvas></div></div>
         <div style="flex:1 1 260px;min-width:0">
           ${alloc.map((a) => `<div class="rp-alloc">
             <span class="lbl">${esc(a.label)}</span>

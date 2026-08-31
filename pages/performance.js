@@ -116,7 +116,7 @@ function renderPerf() {
   </div>
 
   <div class="demo-grid demo-two" style="margin-top:22px">
-    ${panel("Rolling three-year excess return", `<canvas id="rollChart" height="180"></canvas>
+    ${panel("Rolling three-year excess return", `<div class="rp-chart" style="height:180px"><canvas id="rollChart"></canvas></div>
       <div class="rp-note" style="margin-top:10px">Rolling twelve-month excess return over the blended
       benchmark. A composite that only ever wins in one regime is a composite that will disappoint in the
       next one.</div>`)}

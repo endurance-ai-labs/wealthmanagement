@@ -56,7 +56,7 @@ function renderModels() {
   <div class="demo-grid demo-two">
     ${panel(m.name + " — strategic targets", `
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:0 0 170px"><canvas id="modelChart" height="170"></canvas></div>
+        <div style="flex:0 0 170px"><div class="rp-chart" style="height:170px"><canvas id="modelChart"></canvas></div></div>
         <div style="flex:1 1 300px;min-width:0">
           ${["Equity", "Fixed Income", "Alternatives"].map((grp) => {
             const rows = ASSET_CLASSES.filter((a) => a.group === grp && m.t[a.id] > 0);

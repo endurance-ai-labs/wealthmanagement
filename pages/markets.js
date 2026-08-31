@@ -70,7 +70,7 @@ function renderMarkets() {
 
   <div class="demo-grid demo-two" style="margin-top:22px">
     ${panel("Treasury curve", `
-      <canvas id="curveChart" height="180"></canvas>
+      <div class="rp-chart" style="height:180px"><canvas id="curveChart"></canvas></div>
       <table class="demo-tbl" style="width:100%;margin-top:12px">
         <thead><tr><th>Tenor</th><th class="num">Yield</th><th class="num">One month ago</th>
           <th class="num">One year ago</th><th class="num">Change, 1yr</th></tr></thead>

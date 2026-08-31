@@ -75,7 +75,7 @@ function render() {
       equities, so a call never forces a sale. A call inside fourteen days with an unconfirmed source is
       escalated to the adviser the morning it is logged.</div>`, { k: "Next 90 days" })}
 
-    ${panel("J-curve by vintage", `<canvas id="jcurve" height="200"></canvas>
+    ${panel("J-curve by vintage", `<div class="rp-chart" style="height:200px"><canvas id="jcurve"></canvas></div>
       <div class="rp-note" style="margin-top:10px">Each vintage begins below one times as fees and early marks
       run ahead of value creation, then crosses over as the portfolio matures. The 2025 vintages sitting near
       1.05x are exactly where they should be at eighteen months.</div>`)}

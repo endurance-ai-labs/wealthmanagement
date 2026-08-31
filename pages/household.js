@@ -107,7 +107,7 @@ function hhOverview(h, w, r) {
       { k: esc(h.custodian) })}
 
     ${panel("Growth, net of fees", `
-      <canvas id="growthChart" height="170"></canvas>
+      <div class="rp-chart" style="height:170px"><canvas id="growthChart"></canvas></div>
       <div class="rp-note" style="margin-top:10px">Three years indexed to 100, net of all advisory fees,
       against the blended policy benchmark for ${esc(h.modelName)}.</div>`)}
   </div>
@@ -115,7 +115,7 @@ function hhOverview(h, w, r) {
   <div class="demo-grid demo-two" style="margin-top:22px">
     ${panel("Allocation against policy", `
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:0 0 160px"><canvas id="allocChart" height="160"></canvas></div>
+        <div style="flex:0 0 160px"><div class="rp-chart" style="height:160px"><canvas id="allocChart"></canvas></div></div>
         <div style="flex:1 1 280px;min-width:0">${allocRows(householdPositions(h.id))}</div>
       </div>`)}
 
@@ -283,7 +283,7 @@ function hhPerf(h, w, r, bench) {
       market index behind each asset class in the ${esc(h.modelName)} policy.</div>`,
       { k: "As of " + fmtDate(RP.asOf) })}
 
-    ${panel("Growth of $100", `<canvas id="growthChart" height="180"></canvas>`)}
+    ${panel("Growth of $100", `<div class="rp-chart" style="height:180px"><canvas id="growthChart"></canvas></div>`)}
   </div>
 
   <div class="demo-grid demo-two" style="margin-top:22px">
@@ -320,7 +320,7 @@ function hhIps(h, w, r, bench) {
   <div class="demo-grid demo-two">
     ${panel("Current against policy", `
       <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:0 0 160px"><canvas id="allocChart" height="160"></canvas></div>
+        <div style="flex:0 0 160px"><div class="rp-chart" style="height:160px"><canvas id="allocChart"></canvas></div></div>
         <div style="flex:1 1 300px;min-width:0">${allocRows(householdPositions(h.id))}</div>
       </div>
       <div class="rp-note" style="margin-top:12px">The band is the tighter of twenty per cent relative and four

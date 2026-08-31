@@ -521,3 +521,12 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .slk-status.ok { color: #2eb67d; font-weight: 700; }
 .rp-toolrow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 13px; }
 .demo-panel-head .k { white-space: nowrap; }
+
+
+/* ---- Chart containers ------------------------------------------------
+   Chart.js sizes a responsive canvas from its parent box. A canvas dropped
+   straight into a panel that is a stretched grid item inherits the sibling's
+   height and can measure zero width, which renders an empty chart. Every
+   chart therefore lives in a container with a definite height. */
+.rp-chart { position: relative; width: 100%; min-width: 0; }
+.rp-chart > canvas { display: block; }
