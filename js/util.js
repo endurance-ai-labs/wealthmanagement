@@ -533,6 +533,47 @@ function applyChartDefaults() {
 }
 
 /* =========================================================
+   FIT WIDE CONTENT
+   A dense table has cells that will not wrap, so inside a
+   panel it cannot shrink below its natural width: on a narrow
+   screen it paints straight out of the panel and over whatever
+   sits beside it. Every table therefore gets a horizontal
+   scroller, added once after the page renders rather than
+   remembered at sixty call sites.
+   ========================================================= */
+function fitWideContent(root) {
+  if (!root) return;
+  root.querySelectorAll("table.demo-tbl, .rp-doc table").forEach((t) => {
+    if (t.closest(".rp-scroll, .demo-tbl-wrap")) return;
+    const wrap = document.createElement("div");
+    wrap.className = "rp-scroll rp-scroll-auto";
+    t.parentNode.insertBefore(wrap, t);
+    wrap.appendChild(t);
+  });
+  markScrollers(root);
+}
+
+/* A scroller with more content than fits gives no hint that there is more
+   to the right. Mark the ones that actually scroll so the edge can fade. */
+function markScrollers(root) {
+  const scan = () => (root || document).querySelectorAll(".rp-scroll").forEach((el) => {
+    const more = el.scrollWidth - el.clientWidth - el.scrollLeft;
+    el.classList.toggle("has-more", more > 4);
+    el.classList.toggle("has-less", el.scrollLeft > 4);
+  });
+  scan();
+  (root || document).querySelectorAll(".rp-scroll").forEach((el) => {
+    if (el.dataset.bound) return;
+    el.dataset.bound = "1";
+    el.addEventListener("scroll", scan, { passive: true });
+  });
+  if (!window.__rpScrollBound) {
+    window.__rpScrollBound = true;
+    window.addEventListener("resize", scan, { passive: true });
+  }
+}
+
+/* =========================================================
    PAGE BOOT
    Every page calls boot(). It renders the chrome, stops if
    nobody is signed in (the overlay handles that), and keeps
@@ -545,6 +586,7 @@ function boot(opts, fn) {
   const app = $("#app");
   try {
     fn(app);
+    fitWideContent(app);
   } catch (e) {
     if (typeof console !== "undefined") console.error(e);
     app.innerHTML = `<div class="bm-gate"><b>This page could not be rendered</b>

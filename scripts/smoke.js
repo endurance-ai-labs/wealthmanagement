@@ -28,6 +28,8 @@ function makeDom() {
       insertAdjacentHTML() {}, querySelector: () => null, querySelectorAll: () => [],
       focus() {}, setSelectionRange() {}, remove() {}, closest: () => null,
       getContext: () => null, scrollTop: 0, scrollHeight: 0, scrollWidth: 0,
+      clientWidth: 0, clientHeight: 0, scrollLeft: 0,
+      parentNode: null, insertBefore() {}, contains: () => false,
     };
     Object.defineProperty(n, "innerHTML", { get() { return this._html; }, set(v) { this._html = String(v); } });
     Object.defineProperty(n, "outerHTML", { get() { return this._html; }, set(v) { this._html = String(v); } });
@@ -76,6 +78,7 @@ for (const role of ROLES) {
       getComputedStyle: () => ({ getPropertyValue: () => "#1f3d5c", backgroundColor: "#fff" }),
       Chart: undefined,
       matchMedia: () => ({ matches: false, addEventListener() {} }),
+      addEventListener() {}, removeEventListener() {},
     };
     sandbox.window = sandbox;
     vm.createContext(sandbox);

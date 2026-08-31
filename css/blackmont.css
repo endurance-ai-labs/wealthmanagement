@@ -456,7 +456,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 
 /* ---- Dense institutional grid inside a scroller ---- */
 .rp-scroll { overflow: auto; border: 1px solid var(--color-border); border-radius: 4px; max-height: 560px; }
-.rp-scroll table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.rp-scroll table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 12px; }
+/* Sticky headers need the separate box model; with collapsed borders the
+   header detaches and a tfoot can overlap the last body row. */
 .rp-scroll thead th { position: sticky; top: 0; z-index: 2; background: var(--color-bg-2); }
 
 /* ---- Board (markets page): compact benchmark quote cells ---- */
@@ -599,3 +601,85 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .rs-form-wide { grid-column: 1 / -1; }
 .rs-hint { margin-top: 12px; }
 @media (max-width: 640px) { .rs-opt-meta .demo-chip { display: none; } }
+
+
+/* ---- Layout robustness ------------------------------------------------
+   Fixes found by scripts/audit-ui.js: content that painted outside its
+   panel, and pages that scrolled sideways on a narrow screen. */
+
+/* A table wrapped by fitWideContent(). Purely functional: it scrolls, it
+   does not add a border or cap the height the way a deliberate .rp-scroll does. */
+.rp-scroll-auto { max-height: none; border: 0; border-radius: 0; }
+
+/* Show that a scroller has more to the right. */
+.rp-scroll { position: relative; }
+.rp-scroll.has-more::after {
+  content: ''; position: sticky; float: right; right: 0; top: 0;
+  width: 26px; height: 100%; margin-left: -26px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--color-bg-2));
+}
+
+/* The section subnav must scroll rather than push the page sideways. */
+.section-subnav-items { overflow-x: auto; scrollbar-width: none; }
+.section-subnav-items::-webkit-scrollbar { display: none; }
+
+/* Nothing may make the document itself scroll sideways. */
+html, body { max-width: 100%; overflow-x: hidden; }
+.demo-wrap, .page { min-width: 0; max-width: 100%; }
+.demo-grid, .demo-two, .demo-three { min-width: 0; }
+.demo-panel { min-width: 0; overflow-wrap: anywhere; }
+
+/* Allocation rows: below the breakpoint the bar was squeezed to a few pixels
+   and the row could not shrink further. Give the bar a floor and let the
+   label wrap instead. */
+.rp-alloc .lbl { overflow-wrap: anywhere; }
+.rp-alloc .rp-track { min-width: 40px; }
+
+/* Inline links inside notes were 15px tall, below a comfortable target. */
+.rp-note a { display: inline-block; padding: 4px 0; }
+
+/* The adviser/client switch was a 24x10px hit area. */
+.mode-toggle button { padding: 7px 13px; }
+.appr-reset { padding: 4px 8px; font-size: 15px; }
+
+
+/* Scrollers exist for the screen. On paper everything must print in full. */
+@media print {
+  .rp-scroll, .rp-scroll-auto, .demo-tbl-wrap {
+    overflow: visible !important; max-height: none !important;
+  }
+  .rp-scroll::after { display: none !important; }
+}
+
+/* Tap targets: the note links carry the class themselves, so the earlier
+   descendant selector never matched them. */
+a.rp-note, .rp-note a { display: inline-block; padding: 5px 0; }
+.mode-toggle button { min-height: 26px; line-height: 1.1; }
+
+/* The report package builder used native checkboxes at their 13px default. */
+.demo-panel input[type="checkbox"] { width: 17px; height: 17px; flex: none; cursor: pointer; }
+
+/* Allocation rows on a phone. Four fixed-width columns cannot fit 390px, so
+   the label and its two figures share the first line and the bar takes the
+   second, rather than the last column pushing out of the panel. */
+@media (max-width: 560px) {
+  .rp-alloc { grid-template-columns: 1fr 54px 48px; row-gap: 5px; padding: 8px 0; }
+  .rp-alloc > .lbl      { grid-column: 1; grid-row: 1; }
+  .rp-alloc > .num      { grid-column: 2; grid-row: 1; }
+  .rp-alloc > .rp-drift { grid-column: 3; grid-row: 1; }
+  .rp-alloc > .rp-track { grid-column: 1 / -1; grid-row: 2; }
+  .rp-score { grid-template-columns: 1fr auto; row-gap: 4px; }
+  .rp-score > .rp-dots { grid-column: 1 / -1; }
+}
+
+/* The panel-head caption was set to never wrap, which pushed long captions
+   such as a full date range out of the panel on a phone. */
+@media (max-width: 620px) {
+  .demo-panel-head { align-items: flex-start; }
+  .demo-panel-head .k { white-space: normal; text-align: left; }
+  .rp-board { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
+}
+/* A benchmark name must be able to shrink so its level never leaves the cell. */
+.rp-quote { min-width: 0; }
+.rp-quote .n { min-width: 0; overflow-wrap: anywhere; }
+.rp-quote .lv { white-space: nowrap; }
