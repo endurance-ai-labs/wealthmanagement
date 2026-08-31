@@ -1,5 +1,5 @@
 /* =========================================================
-   Rosemont Partners — integrity check
+   Blackmont Advisors — integrity check
    Loads the data layer outside the browser and asserts every
    tie-out rule from the build outline. Run before deploying:
 
@@ -56,7 +56,7 @@ function check(name, pass, detail) {
 const near = (a, b, tol) => Math.abs(a - b) <= (tol == null ? 1 : tol);
 const money = (n) => "$" + (n / 1e6).toFixed(1) + "M";
 
-console.log("\nRosemont Partners — data integrity\n" + "-".repeat(62));
+console.log("\nBlackmont Advisors — data integrity\n" + "-".repeat(62));
 
 /* --- the rules stated in the build outline --- */
 TIEOUTS.forEach((t) => check(t[0], t[1]));
@@ -88,12 +88,17 @@ console.log("-".repeat(62));
 /* --- arithmetic that a viewer could check by hand --- */
 const hhSum = HOUSEHOLDS.reduce((s, h) => s + h.mv, 0);
 check("Detailed household total matches FIRM.detailedAum", near(hhSum, FIRM.detailedAum), money(hhSum));
-check("Firm AUM is exactly $8.4B", FIRM.aum === 8400000000, money(FIRM.aum));
-check("Blended fee lands between 55 and 70 bps",
-  FIRM.blendedFee > 0.0055 && FIRM.blendedFee < 0.0070,
+check("Firm AUM matches the declared target", FIRM.aum > 0 && FIRM.aum === sandbox.TARGET_AUM, money(FIRM.aum));
+check("Blended fee is inside the schedule's own range",
+  FIRM.blendedFee > 0.0030 && FIRM.blendedFee < 0.0115,
   (FIRM.blendedFee * 10000).toFixed(1) + " bps");
-check("Revenue between $45M and $60M",
-  FIRM.revenue > 45e6 && FIRM.revenue < 60e6, "$" + (FIRM.revenue / 1e6).toFixed(1) + "M");
+/* Revenue is not asserted against a fixed range: each firm has its own
+   schedule and scale. What must hold is that it equals the schedule applied
+   to assets, and that the resulting blended rate is plausible for the book. */
+check("Revenue equals the schedule applied to the whole book",
+  Math.abs(FIRM.revenue - (HOUSEHOLDS.reduce((s, h) => s + annualFee(h.mv), 0)
+    + FIRM.tailBook.reduce((s, t) => s + annualFee(t.mv), 0))) < 1,
+  "$" + (FIRM.revenue / 1e6).toFixed(1) + "M");
 check("Roll-forward beginning AUM is positive", ROLLFORWARD.begin > 0, money(ROLLFORWARD.begin));
 
 /* every account belongs to a household, every position to an account */

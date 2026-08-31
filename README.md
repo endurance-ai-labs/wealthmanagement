@@ -1,16 +1,16 @@
-# Rosemont Partners — Private Wealth Portal
+# Blackmont Advisors — Private Wealth Portal
 
 A demonstration environment for a **fictional** registered investment adviser, built by
 Endurance AI Labs. Live at **endurancelabs.ai/wealthmanagement**.
 
-Rosemont Partners, LLC does not exist. Every household, account, holding, fund, manager,
+Blackmont Advisors does not exist. Every household, account, holding, fund, manager,
 person, document and figure in this repository is synthetic and generated for illustration.
 Index and benchmark names are real; the levels and returns attached to them are not.
 Nothing here is investment, tax or legal advice.
 
 ## What it is
 
-25 pages across seven navigation groups, 11 role personas with real permission gating,
+26 pages across seven navigation groups, 11 role personas with real permission gating,
 9 approval chains, and a seeded dataset that reconciles across every screen.
 
 | Group | Pages |
@@ -21,7 +21,8 @@ Nothing here is investment, tax or legal advice.
 | Research | Global Markets, Fund Research, Fund Tearsheet, Manager Due Diligence, Investment Committee, Private Markets |
 | Planning | Wealth Planning, Tax & Estate |
 | Firm | Revenue & Billing, Growth & Pipeline, Compliance, Operations, Team & Capacity |
-| Assistant | Rosemont Brain (page plus a floating assistant on every page) |
+| Signature module | Blackmont desk |
+| Assistant | Blackmont Brain (page plus a floating assistant on every page) |
 
 Plus a public landing page at `/welcome/`.
 
@@ -47,7 +48,7 @@ and every machine.
 
 ```
 node scripts/tieout.js   # data integrity: does everything reconcile
-node scripts/smoke.js    # renders all 25 pages under 4 roles, catches TDZ and reference bugs
+node scripts/smoke.js    # renders all 26 pages under 4 roles, catches TDZ and reference bugs
 python scripts/shells.py # regenerate the HTML page shells
 ```
 
@@ -64,8 +65,8 @@ Following the portal-learns-from-bugs pattern, every bug found becomes a new che
 The base path is `/wealthmanagement/`, so serve a directory containing a folder of that name:
 
 ```bash
-mklink /J C:\Users\<you>\.rp-serve\wealthmanagement C:\Users\<you>\wealthmanagement
-npx serve -l 5251 C:/Users/<you>/.rp-serve
+mklink /J C:\Users\<you>\.bm-serve\wealthmanagement C:\Users\<you>\wealthmanagement
+npx serve -l 5251 C:/Users/<you>/.bm-serve
 ```
 
 Then open `http://localhost:5251/wealthmanagement/`. Access code: `enduranceportal`.

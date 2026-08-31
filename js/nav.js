@@ -1,5 +1,5 @@
 /* ============================================================
-   ROSEMONT PARTNERS — portal navigation
+   BLACKMONT ADVISORS — portal navigation
    Sticky headline marquee + market tape + topbar with grouped
    nav, section subnav, theme toggle and a global adviser/client
    view mode. Same framework as the CFP/Margins portal.
@@ -10,12 +10,12 @@ const BASE = "/wealthmanagement";
 /* ---- Theme: every load starts light ---- */
 (function () {
   document.documentElement.setAttribute("data-theme", "light");
-  try { localStorage.setItem("rp-theme", "light"); } catch (e) {}
+  try { localStorage.setItem("bm-theme", "light"); } catch (e) {}
 })();
 
 /* ---- View mode: adviser (full firm data) vs client (external-safe) ---- */
 const RPMode = (function () {
-  const KEY = "rp-mode";
+  const KEY = "bm-mode";
   function get() { try { return localStorage.getItem(KEY) === "client" ? "client" : "internal"; } catch (e) { return "internal"; } }
   function set(m) { try { localStorage.setItem(KEY, m); } catch (e) {} window.location.reload(); }
   return { get, set, isInternal: () => get() === "internal" };
@@ -32,6 +32,7 @@ const NAV_GROUPS = [
     id: "clients", label: "Clients", items: [
       { href: BASE + "/clients/", label: "Client Book", hhFlyout: true },
       { href: BASE + "/households/", label: "Household Book" },
+      { href: BASE + "/crossborder/", label: "Cross-Border Desk" },
       { href: BASE + "/reporting/",  label: "Reporting Center" },
       { href: BASE + "/documents/",  label: "Document Vault", ext: 1 },
       { href: BASE + "/meetings/",   label: "Meeting Desk", ext: 1 },
@@ -80,7 +81,7 @@ function _normalizePath(p) {
 }
 
 const _GROUP_OF = {
-  "/clients/": "clients", "/households/": "clients", "/reporting/": "clients", "/documents/": "clients", "/meetings/": "clients",
+  "/clients/": "clients", "/households/": "clients", "/crossborder/": "clients", "/reporting/": "clients", "/documents/": "clients", "/meetings/": "clients",
   "/models/": "portfolios", "/trading/": "portfolios", "/performance/": "portfolios", "/risk/": "portfolios",
   "/markets/": "research", "/funds/": "research", "/managers/": "research",
   "/committee/": "research", "/private/": "research",
@@ -126,13 +127,13 @@ const TICKER = [
 ];
 
 const MARQUEE = [
-  ["INVESTMENT COMMITTEE", "Q3 house view published — duration extended to neutral, US small cap raised to modest overweight"],
-  ["ROSEMONT", "Direct indexing now available on taxable equity sleeves above $1M — harvesting live for 62 households"],
-  ["RESEARCH", "Meridian Global Macro placed on watch following the departure of its co-portfolio manager"],
-  ["OPERATIONS", "Q3 quarterly billing run opens 30 September — exception review with advisers closes the 26th"],
-  ["COMPLIANCE", "Annual Form ADV amendment filed; Form CRS delivery tracking at 97.4% of households"],
-  ["PRIVATE MARKETS", "Four capital calls totalling $2.8M land in the next 30 days across 11 households"],
-  ["ROSEMONT", "Employee-owned, fee-only and fiduciary since 2004 — open architecture, custody held away"],
+  ["CROSS-BORDER", "FBAR and FATCA filing season opens \u2014 14 households have reportable foreign accounts this year"],
+  ["BLACKMONT", "Independent since 1999. Not limited to the products of any one company."],
+  ["PLANNING", "Social Security claiming analysis refreshed for every household within five years of eligibility"],
+  ["PLAN SPONSORS", "Annual fiduciary reviews scheduled for all five employer plans before year end"],
+  ["RISK", "Insurance and umbrella coverage reviewed against household net worth at every annual meeting"],
+  ["OPERATIONS", "Q3 billing run opens 30 September \u2014 exception review closes the 26th"],
+  ["BLACKMONT", "Carlsbad, California and League City, Texas \u2014 diversification is how we manage risk"],
 ];
 
 function renderTopbar(opts = {}) {
@@ -221,7 +222,7 @@ function renderTopbar(opts = {}) {
       <a class="brand" href="${BASE}/" style="cursor:pointer;text-decoration:none">
         ${RP_MARK_SVG(30)}
         <div class="rp-brand-text">
-          <div class="rp-word">Rosemont <span>Partners</span></div>
+          <div class="rp-word">Blackmont <span>Partners</span></div>
           <div class="rp-word-sub">${subtitle}</div>
         </div>
       </a>
@@ -335,7 +336,7 @@ function _wireThemeToggle() {
   if (!btn) return;
   function apply(theme) {
     document.documentElement.setAttribute("data-theme", theme);
-    try { localStorage.setItem("rp-theme", theme); } catch (e) {}
+    try { localStorage.setItem("bm-theme", theme); } catch (e) {}
     const moon = btn.querySelector(".theme-icon-moon"), sun = btn.querySelector(".theme-icon-sun");
     if (theme === "light") { if (moon) moon.style.display = "none"; if (sun) sun.style.display = ""; }
     else { if (moon) moon.style.display = ""; if (sun) sun.style.display = "none"; }

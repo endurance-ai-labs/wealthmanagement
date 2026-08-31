@@ -1,5 +1,5 @@
 /* =========================================================
-   ROSEMONT PARTNERS — the client's real world
+   BLACKMONT ADVISORS — the client's real world
 
    The portfolio is only the part of a client's life we
    custody. This layer carries the rest: the family, the
@@ -148,7 +148,7 @@ const WORLD = {};
 
 (function buildWorld() {
   HOUSEHOLDS.forEach((h, hi) => {
-    const rnd = _rand("rp-world-" + h.id);
+    const rnd = _rand("bm-world-" + h.id);
     const anchor = WORLD_ANCHORS[h.id] || {};
     const institutional = h.segment === "Institutional";
 

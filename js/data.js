@@ -1,5 +1,5 @@
 /* =========================================================
-   ROSEMONT PARTNERS — core dataset
+   BLACKMONT ADVISORS — core dataset
 
    Everything below is generated once from fixed seeds, so
    every page reads the same numbers and the tie-out rules
@@ -11,66 +11,63 @@
      roll-forward = begin + flows + market - fees = end
      allocation   = 100% at every level
 
-   Rosemont Partners, LLC is a fictional firm. Every
+   Blackmont Advisors is a fictional firm. Every
    household, person, holding and figure is synthetic.
    ========================================================= */
 
 const RP = {
-  name: "Rosemont Partners",
-  legal: "Rosemont Partners, LLC",
-  tagline: "Private wealth management for families and the institutions they build",
-  est: 2004,
-  crd: "148207 (demo)",
-  registration: "SEC-registered investment adviser",
-  standard: "Fee-only fiduciary. Employee-owned. Open architecture. Custody held away.",
-  hq: "One Rosemont Plaza, Suite 2400, Chicago, IL 60606",
-  phone: "(312) 555-0140",
-  email: "clientservice@rosemontpartners.com",
+  name: "Blackmont Advisors",
+  legal: "Blackmont Advisors",
+  tagline: "Independent advice for people whose lives cross borders",
+  est: 1999,
+  crd: "demo environment",
+  registration: "Independent investment adviser",
+  standard: "Independent. Not limited to the products of any one company. Diversification as risk management.",
+  hq: "2100 Palomar Airport Road, Suite 214, Carlsbad, CA 92011",
+  hq2: "610 W Main Street, Suite 101, League City, TX 77573",
+  phone: "Published on blackmontadvisors.com",
+  email: "Published on blackmontadvisors.com",
   asOf: "2026-08-28",
   quarter: "Q3 2026",
   priorQuarterEnd: "2026-06-30",
   yearStart: "2026-01-01",
 
   offices: [
-    { city: "Chicago, IL",   role: "Headquarters",     staff: 46, aum: 4180000000 },
-    { city: "Greenwich, CT", role: "Northeast",        staff: 16, aum: 2140000000 },
-    { city: "Denver, CO",    role: "Mountain West",    staff: 12, aum: 1180000000 },
-    { city: "Naples, FL",    role: "Southeast",        staff: 10, aum:  910000000 },
+    { city: "Carlsbad, CA",    role: "Head office",   staff: 7, aum: 189000000 },
+    { city: "League City, TX", role: "Gulf Coast",    staff: 4, aum: 123000000 },
   ],
 
-  headcount: { total: 84, advisors: 19, investment: 11, service: 22, operations: 14, planning: 7, corporate: 6, leadership: 5 },
+  headcount: { total: 11, advisors: 3, investment: 1, service: 3, operations: 2, planning: 1, corporate: 1, leadership: 1 },
 
   /* Tiered on total household assets. The single source of every fee figure. */
   feeSchedule: [
-    { from: 0,        upTo: 2000000,  rate: 0.0100, label: "First $2M" },
-    { from: 2000000,  upTo: 5000000,  rate: 0.0085, label: "Next $3M" },
-    { from: 5000000,  upTo: 10000000, rate: 0.0070, label: "Next $5M" },
-    { from: 10000000, upTo: 25000000, rate: 0.0055, label: "Next $15M" },
-    { from: 25000000, upTo: null,     rate: 0.0040, label: "Above $25M" },
+    { from: 0,       upTo: 1000000, rate: 0.0110, label: "First $1M" },
+    { from: 1000000, upTo: 3000000, rate: 0.0095, label: "Next $2M" },
+    { from: 3000000, upTo: 5000000, rate: 0.0080, label: "Next $2M" },
+    { from: 5000000, upTo: null,    rate: 0.0065, label: "Above $5M" },
   ],
 
   custodians: [
-    { name: "Schwab Advisor Services", share: 0.58 },
-    { name: "Fidelity Institutional",  share: 0.31 },
-    { name: "Pershing",                share: 0.11 },
+    { name: "Schwab Advisor Services", share: 0.64 },
+    { name: "Fidelity Institutional",  share: 0.29 },
+    { name: "Pershing",                share: 0.07 },
   ],
 
   serviceTiers: [
-    { id: "Founders", minAssets: 25000000, meetings: 4, calls: "Unlimited", planning: "Full family office", reporting: "Monthly", team: "Partner + advisor + CSA" },
-    { id: "Private",  minAssets: 5000000,  meetings: 3, calls: "Unlimited", planning: "Comprehensive",      reporting: "Quarterly", team: "Advisor + CSA" },
-    { id: "Core",     minAssets: 1000000,  meetings: 2, calls: "As needed", planning: "Goals-based",        reporting: "Quarterly", team: "Advisor + shared CSA" },
-    { id: "Institutional", minAssets: 5000000, meetings: 4, calls: "Unlimited", planning: "Spending policy & IPS", reporting: "Quarterly", team: "CIO + advisor" },
+    { id: "Cross-Border", minAssets: 1000000, meetings: 3, calls: "Unlimited", planning: "Multi-jurisdiction", reporting: "Quarterly", team: "Kent + client service" },
+    { id: "Retirement",   minAssets: 750000,  meetings: 3, calls: "Unlimited", planning: "Income and distribution", reporting: "Quarterly", team: "Adviser + client service" },
+    { id: "Building",     minAssets: 250000,  meetings: 2, calls: "As needed",  planning: "Goals-based",     reporting: "Quarterly", team: "Adviser + shared service" },
+    { id: "Plan Sponsor", minAssets: 1000000, meetings: 4, calls: "Unlimited", planning: "Plan design and fiduciary", reporting: "Quarterly", team: "Kent + operations" },
   ],
 
-  /* The firm's stated targets, used by the growth and team pages. */
-  targets: { nnaAnnual: 620000000, organicGrowth: 0.075, retention: 0.972, householdsPerAdvisor: 45 },
+  targets: { nnaAnnual: 34000000, organicGrowth: 0.095, retention: 0.964, householdsPerAdvisor: 85 },
 };
 
 /* Total discretionary AUM the firm reports. Detailed households below
    plus an aggregate tail that carries the remaining relationships. */
-const TARGET_AUM = 8400000000;
-const TOTAL_HOUSEHOLDS = 612;
-const ADVISORY_ONLY_AUA = 1900000000;
+const TARGET_AUM = 312000000;
+const TOTAL_HOUSEHOLDS = 246;
+const ADVISORY_ONLY_AUA = 84000000;
 
 /* =========================================================
    MODEL PORTFOLIOS
@@ -127,46 +124,46 @@ const SLEEVES = {
     tier, ipsReview, custodian, contact, note]
    ========================================================= */
 const HH_ROWS = [
-  ["HH-0001","Whitmore Family","UHNW","Elaine Whitfield","TAX",41.2,"2019-11-04","IL","Founders","2026-03-12","Schwab","Robert & Diane Whitmore","Founder liquidity event 2019. Concentrated legacy position in the joint account is the central planning problem."],
-  ["HH-0002","Ashcombe Family Trust","UHNW","Elaine Whitfield","END",96.2,"2008-02-19","IL","Founders","2026-01-22","Schwab","Katherine Ashcombe, Trustee","Third-generation family capital. Perpetual horizon, endowment allocation, four grantor trusts."],
-  ["HH-0003","Delacroix Household","UHNW","Peter Nakamura","GRO",68.4,"2012-06-30","CT","Founders","2025-11-08","Pershing","Julien & Marta Delacroix","Two operating businesses still held outside the portfolio. Liquidity planning under way for 2027."],
-  ["HH-0004","Sandoval Family Office","UHNW","Elaine Whitfield","END",52.6,"2015-09-14","FL","Founders","2026-05-30","Schwab","Elena Sandoval","Family office relationship. Rosemont runs the marketable book only."],
-  ["HH-0005","Brennan-Locke Trust","UHNW","Caroline Estes","TAX",34.8,"2011-04-02","IL","Founders","2026-02-18","Fidelity","Thomas Brennan-Locke","Irrevocable trust with two beneficiary lines. Distribution standard is HEMS."],
-  ["HH-0006","Kettering Household","UHNW","Marcus Devereaux","BAL",29.4,"2017-01-25","CO","Founders","2026-04-09","Schwab","Alan & Rosalind Kettering","Retired 2024. Portfolio now funds the entire spending need."],
-  ["HH-0007","Nakashima Family","UHNW","Peter Nakamura","GRO",27.1,"2020-08-11","CT","Founders","2026-06-24","Fidelity","Kenji & Amy Nakashima","Still accumulating. Two children, both 529 plans funded to the exclusion limit."],
-  ["HH-0008","Ferraro Household","UHNW","Sondra Vasquez","TAX",31.5,"2013-10-07","IL","Founders","2025-07-14","Schwab","Vincent Ferraro","Real estate operator. Portfolio is the diversifying asset against the property book."],
-  ["HH-0009","Okonkwo Family","HNW","Marcus Devereaux","GRO",24.1,"2018-03-19","IL","Private","2026-07-14","Schwab","Chidi & Ngozi Okonkwo","Two physicians. Peak earning years, aggressive savings rate."],
-  ["HH-0010","Sterling Household","HNW","Caroline Estes","BAL",22.4,"2014-05-06","CO","Private","2026-01-15","Fidelity","Marjorie Sterling","Widowed 2023. Estate plan restructured; beneficiary review completed in March."],
-  ["HH-0011","Vandermeer Trust","HNW","Elaine Whitfield","TAX",19.6,"2016-11-22","IL","Private","2026-03-27","Schwab","Hendrik Vandermeer","Grantor trust. Annual exclusion gifting programme running since 2016."],
-  ["HH-0012","Callahan Household","HNW","Marcus Devereaux","BAL",18.9,"2015-07-13","FL","Private","2025-12-04","Pershing","Sean & Bridget Callahan","Relocated to Florida in 2024. State tax situs change reduced the muni case."],
-  ["HH-0013","Ibarra Family","HNW","Sondra Vasquez","MOD",16.2,"2019-02-28","IL","Private","2026-05-19","Schwab","Rafael & Luz Ibarra","Business sale closed 2022. Conservative by preference, not by capacity."],
-  ["HH-0014","Pemberton Household","HNW","Grant Whitley","GRO",14.8,"2021-06-08","CT","Private","2026-04-30","Fidelity","James Pemberton","Technology executive. Significant unvested equity outside the portfolio."],
-  ["HH-0015","Roswell Family Trust","HNW","Caroline Estes","CON",12.6,"2010-09-01","IL","Private","2026-02-06","Schwab","Patricia Roswell, Trustee","Income-first mandate. Trust distributes quarterly to three beneficiaries."],
-  ["HH-0016","Haddad Household","HNW","Marcus Devereaux","BAL",11.4,"2017-10-17","CO","Private","2026-06-11","Schwab","Nadim & Layla Haddad","Both approaching retirement in 2028. Glide path begins next year."],
-  ["HH-0017","Lindqvist Household","HNW","Grant Whitley","MOD",9.8,"2020-01-14","IL","Private","2025-06-23","Fidelity","Erik & Sofia Lindqvist","Dual citizens. Reporting requirements reviewed annually with counsel."],
-  ["HH-0018","Ashworth Household","HNW","Nadia Osei","BAL",8.6,"2018-08-30","FL","Private","2026-07-02","Pershing","Charles Ashworth","Sold a professional practice in 2021. Deferred compensation runs through 2029."],
-  ["HH-0019","Marchetti Family","HNW","Sondra Vasquez","GRO",7.9,"2022-03-11","IL","Private","2026-05-08","Schwab","Gianni & Rosa Marchetti","Newer relationship. Consolidating from three prior advisers."],
-  ["HH-0020","Thibodeaux Household","HNW","Marcus Devereaux","CON",7.2,"2016-04-21","FL","Private","2026-01-29","Schwab","Marie Thibodeaux","Retired educator. Spending policy is 3.4% of a three-year average."],
-  ["HH-0021","Osei-Bonsu Household","HNW","Nadia Osei","BAL",6.4,"2021-11-30","IL","Private","2026-06-27","Fidelity","Kwame & Adjoa Osei-Bonsu","Both in their forties. Education funding is the primary near-term goal."],
-  ["HH-0022","Renner Household","HNW","Grant Whitley","MOD",5.8,"2019-05-16","CO","Private","2025-08-05","Schwab","David & Kate Renner","Second-home purchase planned for 2027; liquidity reserved."],
-  ["HH-0023","Aldridge Household","Emerging","Nadia Osei","BAL",4.6,"2022-09-08","IL","Core","2026-04-15","Schwab","Simon Aldridge","Referred by the Kettering household."],
-  ["HH-0024","Barros Household","Emerging","Marcus Devereaux","GRO",4.2,"2023-01-19","FL","Core","2026-07-21","Schwab","Ana Barros","Early career, high savings rate, long horizon."],
-  ["HH-0025","Chen Household","Emerging","Nadia Osei","GRO",3.8,"2021-07-27","IL","Core","2026-03-05","Fidelity","Wei & Lin Chen","Two engineers. Concentrated employer stock managed down over three years."],
-  ["HH-0026","Duarte Household","Emerging","Grant Whitley","BAL",3.4,"2022-11-14","CO","Core","2026-05-27","Schwab","Isabel Duarte","Inherited portfolio, repositioned over four quarters to manage gains."],
-  ["HH-0027","Eriksson Household","Emerging","Nadia Osei","MOD",3.1,"2020-10-05","IL","Core","2026-02-13","Schwab","Anders Eriksson","Approaching retirement. Social Security claiming analysis completed."],
-  ["HH-0028","Fontaine Household","Emerging","Sondra Vasquez","BAL",2.8,"2023-06-02","IL","Core","2026-06-18","Fidelity","Claire Fontaine","Divorce settlement in 2023. Rebuilding the plan from a new baseline."],
-  ["HH-0029","Girard Household","Emerging","Grant Whitley","GRO",2.4,"2024-02-26","CO","Core","2026-07-09","Schwab","Luc Girard","Referred by a centre of influence at a Denver law firm."],
-  ["HH-0030","Hollis Household","Emerging","Nadia Osei","CON",2.1,"2019-12-11","IL","Core","2026-01-08","Schwab","Margaret Hollis","Retired. Portfolio supplements a defined benefit pension."],
-  ["HH-0031","Imada Household","Emerging","Marcus Devereaux","BAL",1.9,"2023-09-21","FL","Core","2026-05-14","Pershing","Sara Imada","Business owner. Solo 401(k) established at onboarding."],
-  ["HH-0032","Jelani Household","Emerging","Nadia Osei","GRO",1.6,"2024-05-13","IL","Core","2026-06-30","Schwab","Amara Jelani","Physician in fellowship. Student loan strategy is part of the plan."],
-  ["HH-0033","Kowalski Household","Emerging","Grant Whitley","MOD",1.4,"2022-04-07","IL","Core","2026-03-19","Fidelity","Piotr Kowalski","Consolidated four legacy retirement accounts at onboarding."],
-  ["HH-0034","Lemaire Household","Emerging","Sondra Vasquez","CP",1.2,"2025-01-27","IL","Core","2026-07-28","Schwab","Yvette Lemaire","Newest relationship in the detailed book. Capital is earmarked for a 2027 purchase."],
-  ["HH-0035","Harrowfield Foundation","Institutional","David Ferreira","END",48.6,"2009-05-01","IL","Institutional","2025-05-25","Schwab","Board Investment Committee","Private foundation. 5% distribution requirement drives the spending policy."],
-  ["HH-0036","Calloway Family Foundation","Institutional","David Ferreira","BAL",31.2,"2013-03-14","IL","Institutional","2026-04-16","Schwab","Grants Committee","Grant-making foundation, three-year average spending rule."],
-  ["HH-0037","St. Aldate's School Endowment","Institutional","Caroline Estes","END",22.4,"2011-08-22","CT","Institutional","2026-06-05","Fidelity","Finance Committee","School endowment. Spending policy 4.5% of a twelve-quarter average."],
-  ["HH-0038","Meridian Health Retirement Plan","Institutional","David Ferreira","MOD",18.6,"2016-01-11","IL","Institutional","2026-05-21","Fidelity","Plan Committee","Defined contribution plan. Collective trusts only, no retail share classes."],
-  ["HH-0039","Kettering Charitable Trust","Institutional","Marcus Devereaux","CON",12.4,"2018-07-19","CO","Institutional","2026-03-31","Schwab","Trustees","Charitable remainder trust connected to the Kettering household."],
-  ["HH-0040","Ashcombe Donor-Advised Fund","Institutional","Elaine Whitfield","BAL",8.9,"2014-10-30","IL","Institutional","2026-01-17","Schwab","Katherine Ashcombe, Advisor","Granting vehicle for the Ashcombe family. Invested in the household model."],
+  ["HH-0001","Whitmore Family","UHNW","Kent LaLonde","TAX",8.4,"2011-04-18","CA","Cross-Border","2026-03-12","Schwab","Robert & Diane Whitmore","Sold a medical device business in 2019. Concentrated legacy position is the central planning problem."],
+  ["HH-0002","Ashcombe Family Trust","UHNW","Kent LaLonde","BAL",11.6,"2006-02-19","CA","Cross-Border","2026-01-22","Schwab","Katherine Ashcombe, Trustee","Multi-generation family capital. Two beneficiaries resident outside the United States."],
+  ["HH-0003","Delacroix Household","UHNW","Kent LaLonde","GRO",9.2,"2014-06-30","CA","Cross-Border","2025-11-08","Pershing","Julien & Marta Delacroix","Dual French and US citizens. Assets and reporting obligations on both sides."],
+  ["HH-0004","Okonkwo Household","UHNW","Dana Reyes","BAL",7.1,"2016-09-14","TX","Cross-Border","2026-05-30","Schwab","Chidi & Ngozi Okonkwo","Energy executive on a Lagos rotation. Payroll and tax equalisation run through the employer."],
+  ["HH-0005","Brennan-Locke Trust","UHNW","Kent LaLonde","TAX",6.8,"2010-04-02","CA","Legacy","2026-02-18","Fidelity","Thomas Brennan-Locke","Irrevocable trust with two beneficiary lines. Distribution standard is HEMS."],
+  ["HH-0006","Kettering Household","UHNW","Dana Reyes","BAL",5.9,"2013-01-25","TX","Retirement","2026-04-09","Schwab","Alan & Rosalind Kettering","Retired from a petrochemical career in 2024. The portfolio funds the whole spending need."],
+  ["HH-0007","Nakashima Family","UHNW","Kent LaLonde","GRO",5.4,"2018-08-11","CA","Cross-Border","2026-06-24","Fidelity","Kenji & Amy Nakashima","Tokyo posting through 2028. Yen exposure hedged on the spending sleeve only."],
+  ["HH-0008","Ferraro Household","HNW","Marcus Duval","TAX",4.8,"2012-10-07","CA","Legacy","2025-07-14","Schwab","Vincent Ferraro","Carlsbad property operator. The portfolio is the diversifying asset against the property book."],
+  ["HH-0009","Alvarez Household","HNW","Dana Reyes","GRO",4.4,"2017-03-19","TX","Cross-Border","2026-07-14","Schwab","Miguel & Sofia Alvarez","Aerospace contractor, Clear Lake. Mexico City family property and a cross-border estate question."],
+  ["HH-0010","Sterling Household","HNW","Marcus Duval","BAL",4.1,"2014-05-06","CA","Retirement","2026-01-15","Fidelity","Marjorie Sterling","Widowed 2023. Estate plan restructured and beneficiary review completed in March."],
+  ["HH-0011","Vandermeer Trust","HNW","Kent LaLonde","TAX",3.8,"2015-11-22","CA","Cross-Border","2026-03-27","Schwab","Hendrik Vandermeer","Dutch national, US resident. Treaty position reviewed annually with counsel."],
+  ["HH-0012","Callahan Household","HNW","Dana Reyes","BAL",3.5,"2015-07-13","TX","Retirement","2025-12-04","Pershing","Sean & Bridget Callahan","Retired from NASA contracting in 2025. Pension plus portfolio funds the spending need."],
+  ["HH-0013","Ibarra Family","HNW","Marcus Duval","MOD",3.2,"2019-02-28","CA","Core","2026-05-19","Schwab","Rafael & Luz Ibarra","Business sale closed 2022. Conservative by preference, not by capacity."],
+  ["HH-0014","Pemberton Household","HNW","Dana Reyes","GRO",2.9,"2021-06-08","TX","Core","2026-04-30","Fidelity","James Pemberton","Energy trading executive. Significant unvested equity outside the portfolio."],
+  ["HH-0015","Roswell Family Trust","HNW","Marcus Duval","CON",2.7,"2010-09-01","CA","Retirement","2026-02-06","Schwab","Patricia Roswell, Trustee","Income-first mandate. Trust distributes quarterly to three beneficiaries."],
+  ["HH-0016","Haddad Household","HNW","Kent LaLonde","BAL",2.5,"2017-10-17","CA","Cross-Border","2026-06-11","Schwab","Nadim & Layla Haddad","Dubai posting since 2022. Foreign account reporting is the annual work."],
+  ["HH-0017","Lindqvist Household","HNW","Marcus Duval","MOD",2.3,"2020-01-14","CA","Cross-Border","2025-06-23","Fidelity","Erik & Sofia Lindqvist","Swedish and US citizens. Reporting obligations reviewed annually with counsel."],
+  ["HH-0018","Ashworth Household","HNW","Dana Reyes","BAL",2.1,"2018-08-30","TX","Retirement","2026-07-02","Pershing","Charles Ashworth","Sold a professional practice in 2021. Deferred compensation runs through 2029."],
+  ["HH-0019","Marchetti Family","HNW","Marcus Duval","GRO",1.9,"2022-03-11","CA","Core","2026-05-08","Schwab","Gianni & Rosa Marchetti","Newer relationship. Consolidating from three prior advisers."],
+  ["HH-0020","Thibodeaux Household","HNW","Dana Reyes","CON",1.8,"2016-04-21","TX","Retirement","2026-01-29","Schwab","Marie Thibodeaux","Retired educator. Spending policy is 3.4% of a three-year average."],
+  ["HH-0021","Osei-Bonsu Household","HNW","Kent LaLonde","BAL",1.7,"2021-11-30","CA","Cross-Border","2026-06-27","Fidelity","Kwame & Adjoa Osei-Bonsu","Ghana and US. Education funding for two children is the near-term goal."],
+  ["HH-0022","Renner Household","HNW","Marcus Duval","MOD",1.6,"2019-05-16","CA","Core","2025-08-05","Schwab","David & Kate Renner","Second-home purchase planned for 2027; liquidity reserved."],
+  ["HH-0023","Aldridge Household","HNW","Dana Reyes","BAL",1.4,"2022-09-08","TX","Core","2026-04-15","Schwab","Simon Aldridge","Referred by the Kettering household."],
+  ["HH-0024","Barros Household","HNW","Marcus Duval","GRO",1.3,"2023-01-19","CA","Core","2026-07-21","Schwab","Ana Barros","Brazilian national, US green card. Early career, high savings rate."],
+  ["HH-0025","Chen Household","HNW","Dana Reyes","GRO",1.2,"2021-07-27","TX","Core","2026-03-05","Fidelity","Wei & Lin Chen","Two engineers. Concentrated employer stock managed down over three years."],
+  ["HH-0026","Duarte Household","HNW","Marcus Duval","BAL",1.1,"2022-11-14","CA","Core","2026-05-27","Schwab","Isabel Duarte","Inherited portfolio, repositioned over four quarters to manage gains."],
+  ["HH-0027","Eriksson Household","Emerging","Dana Reyes","MOD",0.94,"2020-10-05","TX","Core","2026-02-13","Schwab","Anders Eriksson","Approaching retirement. Social Security claiming analysis completed."],
+  ["HH-0028","Fontaine Household","Emerging","Marcus Duval","BAL",0.86,"2023-06-02","CA","Core","2026-06-18","Fidelity","Claire Fontaine","Divorce settlement in 2023. Rebuilding the plan from a new baseline."],
+  ["HH-0029","Girard Household","Emerging","Dana Reyes","GRO",0.78,"2024-02-26","TX","Building","2026-07-09","Schwab","Luc Girard","Referred by a centre of influence at a Houston law firm."],
+  ["HH-0030","Hollis Household","Emerging","Marcus Duval","CON",0.71,"2019-12-11","CA","Retirement","2026-01-08","Schwab","Margaret Hollis","Retired. Portfolio supplements a defined benefit pension."],
+  ["HH-0031","Imada Household","Emerging","Dana Reyes","BAL",0.64,"2023-09-21","TX","Building","2026-05-14","Pershing","Sara Imada","Business owner. Solo 401(k) established at onboarding."],
+  ["HH-0032","Jelani Household","Emerging","Marcus Duval","GRO",0.58,"2024-05-13","CA","Building","2026-06-30","Schwab","Amara Jelani","Physician in fellowship. Student loan strategy is part of the plan."],
+  ["HH-0033","Kowalski Household","Emerging","Dana Reyes","MOD",0.52,"2022-04-07","TX","Building","2026-03-19","Fidelity","Piotr Kowalski","Consolidated four legacy retirement accounts at onboarding."],
+  ["HH-0034","Lemaire Household","Emerging","Marcus Duval","CP",0.46,"2025-01-27","CA","Building","2026-07-28","Schwab","Yvette Lemaire","Newest relationship in the detailed book. Capital earmarked for a 2027 purchase."],
+  ["HH-0035","Palomar Biosciences 401(k)","Institutional","Kent LaLonde","MOD",8.9,"2012-05-01","CA","Plan Sponsor","2026-02-25","Schwab","Plan Committee","Carlsbad employer plan, 84 participants. Collective trusts only."],
+  ["HH-0036","Clear Lake Engineering 401(k)","Institutional","Kent LaLonde","MOD",6.2,"2015-03-14","TX","Plan Sponsor","2026-04-16","Schwab","Plan Committee","League City employer plan, 61 participants. Annual fiduciary review."],
+  ["HH-0037","Coastline Surgical Partners 401(k)","Institutional","Dana Reyes","BAL",4.4,"2017-08-22","CA","Plan Sponsor","2026-06-05","Fidelity","Plan Committee","Physician-owned practice plan, 38 participants."],
+  ["HH-0038","Gulf Fabricators Retirement Plan","Institutional","Kent LaLonde","CON",3.1,"2018-01-11","TX","Plan Sponsor","2026-05-21","Fidelity","Plan Committee","Profit-sharing plan, 47 participants. Conservative default."],
+  ["HH-0039","Kettering Charitable Trust","Institutional","Dana Reyes","CON",2.2,"2018-07-19","TX","Plan Sponsor","2026-03-31","Schwab","Trustees","Charitable remainder trust connected to the Kettering household."],
+  ["HH-0040","Ashcombe Donor-Advised Fund","Institutional","Kent LaLonde","BAL",1.6,"2014-10-30","CA","Plan Sponsor","2026-01-17","Schwab","Katherine Ashcombe, Advisor","Granting vehicle for the Ashcombe family."],
 ];
 
 /* Registration templates by segment: [label, taxable, altEligible, share of household MV] */
@@ -229,7 +226,7 @@ const LOTS = [];
   HH_ROWS.forEach((row, hi) => {
     const [id, name, segment, advisor, modelId, mvM, since, state,
            tier, ipsReview, custodian, contact, note] = row;
-    const rnd = _rand("rp-hh-" + id);
+    const rnd = _rand("bm-hh-" + id);
     const model = MODEL[modelId];
     const mv = Math.round(mvM * 1e6);
 
@@ -301,7 +298,7 @@ const LOTS = [];
 
     /* --- positions: target, then seeded market drift, then renormalise to account MV --- */
     accts.forEach((a) => {
-      const arnd = _rand("rp-pos-" + a.id);
+      const arnd = _rand("bm-pos-" + a.id);
       const draft = [];
       Object.keys(a.target).forEach((acId) => {
         const pct = a.target[acId];
@@ -370,7 +367,7 @@ const ACCT = {}; ACCOUNTS.forEach((a) => { ACCT[a.id] = a; });
 /* ---- tax lots: split every taxable position into one to four lots ---- */
 (function buildLots() {
   POSITIONS.forEach((p) => {
-    const rnd = _rand("rp-lot-" + p.id);
+    const rnd = _rand("bm-lot-" + p.id);
     const n = p.taxable ? 1 + Math.floor(rnd() * 4) : 1;
     const dates = ["2019-06-14", "2020-04-02", "2021-03-18", "2022-10-11", "2023-08-24", "2024-05-09", "2025-02-27", "2026-01-16", "2026-05-22"];
     /* Split into shares that always sum back to the position value exactly. */
@@ -445,10 +442,10 @@ const FIRM = (function () {
   /* The firm's full segment mix. The detailed 40 are a representative sample
      drawn from it; the tail carries the remaining relationships. */
   const firmSegments = [
-    { id: "UHNW",          label: "Ultra high net worth ($25M+)",    households: 74,  share: 0.610 },
-    { id: "HNW",           label: "High net worth ($5\u201325M)",   households: 268, share: 0.268 },
-    { id: "Emerging",      label: "Emerging wealth ($1\u20135M)",   households: 216, share: 0.058 },
-    { id: "Institutional", label: "Foundations, endowments & plans", households: 54,  share: 0.064 },
+    { id: "UHNW",          label: "Legacy households ($5M+)",       households: 14,  share: 0.281 },
+    { id: "HNW",           label: "Core households ($1\u20135M)",   households: 96,  share: 0.472 },
+    { id: "Emerging",      label: "Building households (under $1M)", households: 118, share: 0.148 },
+    { id: "Institutional", label: "Retirement plan sponsors",        households: 18,  share: 0.099 },
   ].map((seg) => {
     const detailed = HOUSEHOLDS.filter((h) => h.segment === seg.id);
     const aum = Math.round(TARGET_AUM * seg.share);
@@ -468,7 +465,7 @@ const FIRM = (function () {
   const tailBook = [];
   firmSegments.forEach((seg) => {
     if (seg.tailCount <= 0) return;
-    const rnd = _rand("rp-tail-" + seg.id);
+    const rnd = _rand("bm-tail-" + seg.id);
     const weights = Array.from({ length: seg.tailCount }, () => Math.exp((rnd() - 0.5) * 1.35));
     const wSum = weights.reduce((a, b) => a + b, 0);
     let placed = 0;
@@ -514,12 +511,16 @@ const FIRM = (function () {
 /* ---- AUM roll-forward: begin + flows + market - fees = end, exactly ---- */
 const ROLLFORWARD = (function () {
   const end = FIRM.aum;
-  const newHouseholds = 214000000;
-  const additions = 386000000;
-  const withdrawals = -248000000;
-  const attrition = -96000000;
+  /* Flows are expressed as a share of assets rather than as fixed dollars, so
+     the roll-forward stays coherent at any firm size, then rounded to a
+     reportable figure. At $8.4B these reproduce the original numbers exactly. */
+  const r = (x) => Math.round((end * x) / 1e5) * 1e5;
+  const newHouseholds = r(0.02548);
+  const additions     = r(0.04595);
+  const withdrawals   = -r(0.02952);
+  const attrition     = -r(0.01143);
   const fees = -Math.round(FIRM.revenue * 0.66); /* three quarters billed year to date */
-  const marketReturn = 512000000;
+  const marketReturn  = r(0.06095);
   const nna = newHouseholds + additions + withdrawals + attrition;
   const begin = end - nna - marketReturn - fees;
   return {
@@ -531,14 +532,9 @@ const ROLLFORWARD = (function () {
 
 /* Advisers, used by the team, growth and revenue pages. */
 const ADVISORS = [
-  { name: "Elaine Whitfield",  title: "Partner & Senior Wealth Advisor", office: "Chicago",   households: 38, tenure: 2009, capacity: 45 },
-  { name: "Marcus Devereaux",  title: "Wealth Advisor",                  office: "Chicago",   households: 52, tenure: 2016, capacity: 45 },
-  { name: "Caroline Estes",    title: "Partner & Senior Wealth Advisor", office: "Greenwich", households: 34, tenure: 2011, capacity: 45 },
-  { name: "Peter Nakamura",    title: "Senior Wealth Advisor",           office: "Greenwich", households: 29, tenure: 2013, capacity: 45 },
-  { name: "Sondra Vasquez",    title: "Wealth Advisor",                  office: "Chicago",   households: 47, tenure: 2018, capacity: 45 },
-  { name: "Grant Whitley",     title: "Wealth Advisor",                  office: "Denver",    households: 41, tenure: 2019, capacity: 45 },
-  { name: "Nadia Osei",        title: "Wealth Advisor",                  office: "Naples",    households: 58, tenure: 2020, capacity: 45 },
-  { name: "David Ferreira",    title: "Chief Investment Officer",        office: "Chicago",   households: 12, tenure: 2007, capacity: 20 },
+  { name: "Kent LaLonde",  title: "Principal, CFP", office: "Carlsbad",    households: 104, tenure: 1999, capacity: 110 },
+  { name: "Dana Reyes",    title: "Wealth Adviser", office: "League City", households: 82,  tenure: 2016, capacity: 85 },
+  { name: "Marcus Duval",  title: "Wealth Adviser", office: "Carlsbad",    households: 60,  tenure: 2020, capacity: 85 },
 ];
 
 /* =========================================================
@@ -596,7 +592,7 @@ const YTD_MONTHS = 8; /* January through August 2026 */
 const MODEL_RETURNS = (function () {
   const out = {};
   MODELS.forEach((m) => {
-    const rnd = _rand("rp-ret-" + m.id);
+    const rnd = _rand("bm-ret-" + m.id);
     const bench = policyBenchmark(m.id);
 
     /* Expected return and volatility implied by the model's own weights. */
@@ -645,7 +641,7 @@ function householdReturns(hhId) {
   const h = HH[hhId];
   if (!h) return null;
   const base = MODEL_RETURNS[h.model].monthly;
-  const rnd = _rand("rp-hhret-" + hhId);
+  const rnd = _rand("bm-hhret-" + hhId);
   const monthly = base.map((r) => +(r + (rnd() - 0.5) * 0.34).toFixed(2));
   const fee = effectiveRate(h.mv) * 100 / 12;
   const net = monthly.map((r) => +(r - fee).toFixed(2));
@@ -672,7 +668,7 @@ const COMMITMENTS = (function () {
   const eligible = HOUSEHOLDS.filter((h) => h.qualified && (MODEL[h.model].t.PE > 0 || MODEL[h.model].t.PC > 0));
   const out = [];
   eligible.forEach((h, hi) => {
-    const rnd = _rand("rp-commit-" + h.id);
+    const rnd = _rand("bm-commit-" + h.id);
     const n = h.segment === "Institutional" ? 5 + Math.floor(rnd() * 3)
             : h.mv > 40000000 ? 6 + Math.floor(rnd() * 3)
             : 2 + Math.floor(rnd() * 3);
@@ -720,7 +716,7 @@ const CAPITAL_CALLS = COMMITMENTS
    ========================================================= */
 const TRADES = (function () {
   const out = [];
-  const rnd = _rand("rp-trades");
+  const rnd = _rand("bm-trades");
   const reasons = ["Rebalance to target", "New funding", "Raise cash for distribution", "Tax-loss harvest",
                    "Model change — duration", "Concentrated position reduction", "Capital call funding"];
   for (let i = 0; i < 180; i++) {
@@ -759,7 +755,7 @@ const BLOCKS = (function () {
 const BREAKS = (function () {
   const types = ["Price variance", "Position quantity", "Missing cost basis", "Unposted dividend",
                  "Cash variance", "Corporate action not applied", "Duplicate transaction"];
-  const rnd = _rand("rp-breaks");
+  const rnd = _rand("bm-breaks");
   return Array.from({ length: 25 }, (_, i) => {
     const p = POSITIONS[Math.floor(rnd() * POSITIONS.length)];
     const age = i < 3 ? 12 + Math.floor(rnd() * 9) : Math.floor(rnd() * 6);
@@ -792,7 +788,7 @@ const CORP_ACTIONS = [
    ========================================================= */
 const TRANSACTIONS = (function () {
   const out = [];
-  const rnd = _rand("rp-txn");
+  const rnd = _rand("bm-txn");
   const types = [
     ["Contribution", 1], ["Withdrawal", -1], ["Dividend", 1], ["Interest", 1],
     ["Advisory fee", -1], ["Capital call", -1], ["Distribution received", 1],
@@ -837,7 +833,7 @@ const PROSPECTS = (function () {
   const stages = [["Identified", .10], ["Discovery held", .25], ["Proposal delivered", .45],
                   ["Verbal commitment", .75], ["Paperwork out", .90]];
   const sources = ["Client referral", "Centre of influence", "Professional network", "Event", "Digital / inbound"];
-  const rnd = _rand("rp-prospects");
+  const rnd = _rand("bm-prospects");
   return names.map((n, i) => {
     const st = stages[i % stages.length];
     const assets = Math.round((1.2 + rnd() * 34) * 1e6 / 1e5) * 1e5;
@@ -849,7 +845,7 @@ const PROSPECTS = (function () {
       weighted: Math.round(assets * st[1]),
       revenue: Math.round(annualFee(assets)),
       source: sources[i % sources.length],
-      advisor: ADVISORS[i % 7].name,
+      advisor: ADVISORS[i % ADVISORS.length].name,
       opened: addDays(RP.asOf, -(20 + i * 9)),
       nextStep: ["Second meeting scheduled", "Draft IPS to send", "Awaiting custodian paperwork",
                  "Introduce the CIO", "Portfolio review delivered", "Follow up after their board meeting"][i % 6],
@@ -982,7 +978,7 @@ const DOC_TYPES = [
 
 const DOCUMENTS = (function () {
   const out = [];
-  const rnd = _rand("rp-docs");
+  const rnd = _rand("bm-docs");
   HOUSEHOLDS.forEach((h) => {
     DOC_TYPES.forEach((t, ti) => {
       if (ti > 6 && rnd() > 0.55) return;
@@ -1149,7 +1145,7 @@ const TIEOUTS = (function () {
 
   const failures = results.filter((r) => !r[1]);
   if (failures.length && typeof console !== "undefined") {
-    console.error("Rosemont tie-out failures:", failures.map((f) => f[0]));
+    console.error("Blackmont tie-out failures:", failures.map((f) => f[0]));
   }
   return results;
 })();

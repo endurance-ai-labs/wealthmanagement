@@ -1,7 +1,7 @@
 /* =========================================================
    FUND TEARSHEET
    Terms, returns, risk, exposure, tax, private-market
-   metrics, operational due diligence and the Rosemont
+   metrics, operational due diligence and the Blackmont
    scorecard behind the approval.
    ========================================================= */
 
@@ -44,7 +44,7 @@ function renderFund() {
       <div class="l">${f.isPrivate ? "TVPI" : "Sharpe ratio"}</div>
       <div class="s">${f.isPrivate ? fmtX(f.priv.dpi) + " distributed" : "Three years"}</div></div>
     <div class="demo-kpi"><div class="v">${f.scoreAvg == null ? "—" : f.scoreAvg.toFixed(1)}</div>
-      <div class="l">Rosemont score</div><div class="s">Average of six dimensions</div></div>
+      <div class="l">Blackmont score</div><div class="s">Average of six dimensions</div></div>
     <div class="demo-kpi"><div class="v">${fmtM(heldValue)}</div><div class="l">Held for clients</div>
       <div class="s">${households.length} households</div></div>
   </div>
@@ -116,7 +116,7 @@ function renderFund() {
       ${esc(f.benchName)}, with a ${fmtPct(3.6)} risk-free assumption. Alpha is the return left after paying for
       the beta the fund actually took.</div>`, { k: "Three years" })}
 
-    ${panel("Rosemont scorecard", `
+    ${panel("Blackmont scorecard", `
       ${SCORE_LABELS.map((lbl, i) => {
         const v = f.scores[i];
         return `<div class="rp-score">

@@ -31,7 +31,7 @@ function firmHome() {
   /* Headline figures switch between the whole firm and the signed-in
      adviser's own book, so a wealth adviser never sees firm economics. */
   const kpis = firmWide ? [
-    ["Discretionary AUM", fmtM(FIRM.aum), "+6.7% year to date", "up"],
+    ["Discretionary AUM", fmtM(FIRM.aum), ret((ROLLFORWARD.end / ROLLFORWARD.begin - 1) * 100, 1).replace(/<[^>]+>/g, "") + " year to date", "up"],
     ["Advisory-only assets", fmtM(FIRM.aua), "Held-away and reporting-only", ""],
     ["Net new assets, YTD", fmtM(ROLLFORWARD.nna), fmtPct(ROLLFORWARD.organicGrowth * 100, 1) + " organic growth", ROLLFORWARD.nna > 0 ? "up" : "dn"],
     ["Households", FIRM.households.toLocaleString(), "Average " + fmtM(FIRM.avgRelationship), ""],
@@ -329,7 +329,7 @@ function clientHome() {
           <td><b>${esc(g.goal)}</b><div class="rp-note">Target ${fmtM(g.target)}</div></td>
           <td>${pill(g.priority, g.priority === "Essential" ? "blue" : g.priority === "Important" ? "amber" : "gray")}</td>
           <td class="num">${g.horizon} yrs</td>
-          <td class="num"><b class="rp-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
+          <td class="num"><b class="bm-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
         </tr>`).join("")}</tbody>
       </table>
       <div class="rp-note" style="margin-top:10px">Funded status is the probability-weighted value of assets

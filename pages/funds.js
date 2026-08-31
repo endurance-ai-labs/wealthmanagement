@@ -51,7 +51,7 @@ function renderFunds(keepFocus) {
      ${sel("veh", fnVeh, [["All", "All vehicles"]].concat(VEHICLES.map((v) => [v.id, v.label])))}
      ${sel("st", fnStatus, [["All", "All statuses"], ["Approved", "Approved"], ["Watch", "Watch"], ["Under Review", "Under review"]])}
      ${sel("liq", fnLiq, [["All", "Liquid and private"], ["Liquid", "Liquid only"], ["Private", "Private only"]])}
-     ${sel("sort", fnSort, [["aum", "Sort: fund size"], ["score", "Sort: Rosemont score"], ["y3", "Sort: three-year return"], ["fee", "Sort: fee"], ["name", "Sort: name"]])}
+     ${sel("sort", fnSort, [["aum", "Sort: fund size"], ["score", "Sort: Blackmont score"], ["y3", "Sort: three-year return"], ["fee", "Sort: fee"], ["name", "Sort: name"]])}
      <input class="demo-search" id="fnq" placeholder="Search funds, managers, strategies"
        value="${esc(fnQ)}" oninput="fnSet('q',this.value)">`)}
 

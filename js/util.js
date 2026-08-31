@@ -1,5 +1,5 @@
 /* =========================================================
-   ROSEMONT PARTNERS — shared utilities
+   BLACKMONT ADVISORS — shared utilities
    Formatters, persona/permission model, approval chains,
    e-signature, source chips, and the household math that
    every page reads from. Demo build, fictional data.
@@ -55,11 +55,11 @@ const daysBetween = (a, b) =>
 const ret = (n, dec = 2, suffix = "%") => {
   const c = n > 0.0001 ? "up" : n < -0.0001 ? "dn" : "flat";
   const sign = n > 0.0001 ? "+" : "";
-  return `<span class="rp-ret ${c}">${sign}${Number(n).toFixed(dec)}${suffix}</span>`;
+  return `<span class="bm-ret ${c}">${sign}${Number(n).toFixed(dec)}${suffix}</span>`;
 };
 const money = (n, dec = 0) => {
   const c = n > 0 ? "up" : n < 0 ? "dn" : "flat";
-  return `<span class="rp-ret ${c}">${n > 0 ? "+" : ""}${fmt$(n, dec)}</span>`;
+  return `<span class="bm-ret ${c}">${n > 0 ? "+" : ""}${fmt$(n, dec)}</span>`;
 };
 
 /* ---------- pills ---------- */
@@ -83,7 +83,7 @@ const bar = (pct, tone = "") =>
   `<div class="rp-bar ${tone}"><i style="width:${Math.max(0, Math.min(100, pct))}%"></i></div>`;
 
 /* =========================================================
-   PERSONAS — the Rosemont org drives access
+   PERSONAS — the Blackmont org drives access
    Permission flags:
      firm       firm-wide AUM, flows, executive command centre
      revenue    fee schedules, billing runs, revenue, profitability
@@ -94,51 +94,55 @@ const bar = (pct, tone = "") =>
      external   client view: one household, nothing else
    ========================================================= */
 const PERSONAS = [
-  { id: "ceo",    name: "Margaret Holloway",    title: "Managing Partner & Chief Executive",
-    init: "MH", perms: { firm: 1, revenue: 1, book: 1, research: 1, trading: 1, compliance: 1 }, access: "Full firm access" },
-  { id: "cio",    name: "David Ferreira, CFA",  title: "Chief Investment Officer",
-    init: "DF", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 1, compliance: 0 }, access: "Investment team" },
-  { id: "research", name: "Priya Raghavan, CFA", title: "Director of Research",
+  { id: "ceo",    name: "Kent LaLonde",         title: "Principal, CFP",
+    init: "KL", perms: { firm: 1, revenue: 1, book: 1, research: 1, trading: 1, compliance: 1 }, access: "Full firm access" },
+  { id: "cio",    name: "Dana Reyes",           title: "Wealth Adviser & Investment Committee",
+    init: "DR", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 1, compliance: 0 }, access: "Investment committee" },
+  { id: "research", name: "Priya Raghavan",     title: "Research & Due Diligence",
     init: "PR", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 0, compliance: 0 }, access: "Research & due diligence" },
-  { id: "pm",     name: "Nathan Cole, CFA, CAIA", title: "Senior Portfolio Manager",
-    init: "NC", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 1, compliance: 0 }, access: "Portfolio management" },
-  { id: "advisor1", name: "Elaine Whitfield, CFP", title: "Partner & Senior Wealth Advisor",
-    init: "EW", perms: { firm: 0, revenue: 0, book: 0, research: 1, trading: 0, compliance: 0 }, access: "Advisory — own book" },
-  { id: "advisor2", name: "Marcus Devereaux, CFP", title: "Wealth Advisor",
-    init: "MD", perms: { firm: 0, revenue: 0, book: 0, research: 1, trading: 0, compliance: 0 }, access: "Advisory — own book" },
-  { id: "csa",    name: "Jenna Alvarado",       title: "Client Service Associate",
+  { id: "pm",     name: "Marcus Duval",         title: "Wealth Adviser & Portfolios",
+    init: "MD", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 1, compliance: 0 }, access: "Portfolio management" },
+  { id: "advisor1", name: "Dana Reyes (book)",  title: "Adviser view \u2014 League City book",
+    init: "DR", perms: { firm: 0, revenue: 0, book: 0, research: 1, trading: 0, compliance: 0 }, access: "Advisory \u2014 own book" },
+  { id: "advisor2", name: "Marcus Duval (book)", title: "Adviser view \u2014 Carlsbad book",
+    init: "MD", perms: { firm: 0, revenue: 0, book: 0, research: 1, trading: 0, compliance: 0 }, access: "Advisory \u2014 own book" },
+  { id: "csa",    name: "Jenna Alvarado",       title: "Client Service",
     init: "JA", perms: { firm: 0, revenue: 0, book: 0, research: 0, trading: 0, compliance: 0 }, access: "Client service" },
-  { id: "trading", name: "Thomas Okonjo",       title: "Head of Trading & Operations",
+  { id: "trading", name: "Thomas Okonjo",       title: "Operations & Trading",
     init: "TO", perms: { firm: 1, revenue: 0, book: 1, research: 0, trading: 1, compliance: 0 }, access: "Trading & operations" },
-  { id: "cco",    name: "Rachel Stern, JD",     title: "Chief Compliance Officer",
+  { id: "cco",    name: "Rachel Stern",         title: "Chief Compliance Officer",
     init: "RS", perms: { firm: 1, revenue: 0, book: 1, research: 1, trading: 0, compliance: 1 }, access: "Compliance & oversight" },
-  { id: "cfo",    name: "Alan Pruitt",          title: "Chief Financial Officer",
+  { id: "cfo",    name: "Alan Pruitt",          title: "Business Manager",
     init: "AP", perms: { firm: 1, revenue: 1, book: 1, research: 0, trading: 0, compliance: 0 }, access: "Firm economics" },
-  { id: "client", name: "Whitmore Family",      title: "Client — external portal",
-    init: "W",  perms: { firm: 0, revenue: 0, book: 0, research: 0, trading: 0, compliance: 0, external: 1 } },
+  { id: "client", name: "Whitmore Family",      title: "Client \u2014 external portal",
+    init: "W",  perms: { firm: 0, revenue: 0, book: 0, research: 0, trading: 0, compliance: 0, external: 1 }, access: "Client portal" },
 ];
 
+/* Segment labels are practice-appropriate; the underlying ids are unchanged. */
+const SEG_LABEL = { UHNW: "Legacy", HNW: "Core", Emerging: "Building", Institutional: "Plan Sponsor" };
+const segLabel = (id) => SEG_LABEL[id] || id;
+
 /* Advisor personas see only their own book. */
-const ADVISOR_OF = { advisor1: "Elaine Whitfield", advisor2: "Marcus Devereaux" };
-/* The CSA supports these two advisors. */
-const CSA_SUPPORTS = ["Elaine Whitfield", "Marcus Devereaux"];
+const ADVISOR_OF = { advisor1: "Dana Reyes", advisor2: "Marcus Duval" };
+/* The client service associate supports these advisers. */
+const CSA_SUPPORTS = ["Dana Reyes", "Marcus Duval"];
 /* The external persona is scoped to one household. */
 const CLIENT_HH = "HH-0001";
 
-function currentRole()    { try { return localStorage.getItem("rp-role") || ""; } catch (e) { return ""; } }
+function currentRole()    { try { return localStorage.getItem("bm-role") || ""; } catch (e) { return ""; } }
 function currentPersona() { return PERSONAS.find((p) => p.id === currentRole()) || null; }
 function can(perm)        { const p = currentPersona(); return !!(p && p.perms[perm]); }
 function isSignedIn()     { return !!currentPersona(); }
 function isExternal()     { return can("external"); }
 function setRole(id) {
   try {
-    localStorage.setItem("rp-role", id);
+    localStorage.setItem("bm-role", id);
     const p = PERSONAS.find((x) => x.id === id);
-    localStorage.setItem("rp-mode", p && p.perms.external ? "client" : "internal");
+    localStorage.setItem("bm-mode", p && p.perms.external ? "client" : "internal");
   } catch (e) {}
   window.location.reload();
 }
-function signOutUser() { try { localStorage.removeItem("rp-role"); } catch (e) {} window.location.reload(); }
+function signOutUser() { try { localStorage.removeItem("bm-role"); } catch (e) {} window.location.reload(); }
 
 /* Households this persona may see. */
 function visibleHouseholds() {
@@ -164,12 +168,12 @@ function bookLabel() {
    passphrase in front of the persona overlay. It keeps the demo off search
    and out of casual hands; it is not a security control. */
 const GATE_PHRASE = "enduranceportal";
-function gatePassed() { try { return localStorage.getItem("rp-gate") === "1"; } catch (e) { return true; } }
+function gatePassed() { try { return localStorage.getItem("bm-gate") === "1"; } catch (e) { return true; } }
 function submitGate(e) {
   e.preventDefault();
   const i = document.getElementById("gate-input");
   if (i.value.trim().toLowerCase() === GATE_PHRASE) {
-    try { localStorage.setItem("rp-gate", "1"); } catch (err) {}
+    try { localStorage.setItem("bm-gate", "1"); } catch (err) {}
     window.location.reload();
   } else {
     document.getElementById("gate-err").style.display = "block";
@@ -182,7 +186,7 @@ function renderGate() {
     <div class="login-overlay">
       <div class="login-box" style="max-width:420px">
         <div class="login-logo">${RP_MARK_SVG(46)}</div>
-        <div class="login-title">Rosemont Partners</div>
+        <div class="login-title">Blackmont Advisors</div>
         <div class="login-sub">Private wealth portal &middot; demonstration environment</div>
         <form onsubmit="return submitGate(event)" style="margin-top:22px">
           <input id="gate-input" type="password" autocomplete="off" placeholder="Access code"
@@ -193,7 +197,7 @@ function renderGate() {
             font-weight:700;background:#1f3d5c;color:#fff;border:0;border-radius:6px;cursor:pointer">Enter</button>
         </form>
         <div class="login-foot" style="margin-top:18px">
-          Rosemont Partners is a fictional firm and all data is synthetic.
+          Blackmont Advisors is a fictional firm and all data is synthetic.
           <a href="/wealthmanagement/welcome/">About the platform &rarr;</a>
         </div>
       </div>
@@ -217,13 +221,13 @@ function renderSignIn() {
     <div class="login-overlay">
       <div class="login-box">
         <div class="login-logo">${RP_MARK_SVG(46)}</div>
-        <div class="login-title">Rosemont Partners</div>
+        <div class="login-title">Blackmont Advisors</div>
         <div class="login-sub">Private Wealth Management &middot; client &amp; adviser portal</div>
         <div class="login-note">Select a user to enter. Permissions, visible households and every dollar
           figure on screen follow from the role you choose.</div>
         <div class="login-grid">${cards}</div>
         <div class="login-foot">
-          Demonstration environment. Rosemont Partners is a fictional firm and every household, holding,
+          Demonstration environment. Blackmont Advisors is a fictional firm and every household, holding,
           fund, figure and document in this portal is synthetic.
           <a href="/wealthmanagement/welcome/">Read about the platform &rarr;</a>
         </div>
@@ -248,7 +252,7 @@ const SRC = {
   cust:  ["Custody", "Schwab, Fidelity and Pershing feeds"],
   crm:   ["CRM", "Relationships, activity and pipeline"],
   plan:  ["Planning", "Goals, projections and Monte Carlo"],
-  brain: ["Rosemont Brain", "Generated from the live portfolio data"],
+  brain: ["Blackmont Brain", "Generated from the live portfolio data"],
 };
 function srcChip(kind) {
   const s = SRC[kind];
@@ -267,15 +271,15 @@ function srcChips() {
    ========================================================= */
 function apprState(key, n) {
   try {
-    const raw = JSON.parse(localStorage.getItem("rp-appr:" + key) || "[]");
+    const raw = JSON.parse(localStorage.getItem("bm-appr:" + key) || "[]");
     return Array.from({ length: n }, (_, i) => !!raw[i]);
   } catch (e) { return Array.from({ length: n }, () => false); }
 }
 function apprSave(key, arr) {
-  try { localStorage.setItem("rp-appr:" + key, JSON.stringify(arr)); } catch (e) {}
+  try { localStorage.setItem("bm-appr:" + key, JSON.stringify(arr)); } catch (e) {}
 }
 function apprComplete(key, n) { return apprState(key, n).every(Boolean); }
-function resetChain(key) { try { localStorage.removeItem("rp-appr:" + key); } catch (e) {} window.location.reload(); }
+function resetChain(key) { try { localStorage.removeItem("bm-appr:" + key); } catch (e) {} window.location.reload(); }
 
 function approveStep(key, idx) {
   const el = document.querySelector(`[data-chain="${key}"]`);
@@ -298,7 +302,7 @@ function approvalChain(key, steps, opts = {}) {
     const prevDone = i === 0 || st[i - 1];
     const persona = PERSONAS.find((p) => p.id === s.role);
     const mine = me && me.id === s.role;
-    const nudgeKey = `rp-nudge:${key}:${i}`;
+    const nudgeKey = `bm-nudge:${key}:${i}`;
     let nudged = "";
     try { nudged = localStorage.getItem(nudgeKey) || ""; } catch (e) {}
 
@@ -360,7 +364,7 @@ function slackNudge(key, idx) {
   ov.innerHTML = `
     <div class="slk-card">
       <div class="slk-head"><span class="slk-x" onclick="this.closest('.slk-ov').remove()">✕</span>
-        <b>Rosemont Partners</b><span class="slk-dm-label">Direct message</span></div>
+        <b>Blackmont Advisors</b><span class="slk-dm-label">Direct message</span></div>
       <div class="slk-peer">
         <span class="slk-ava">${esc((who || "?").split(" ").map((w) => w[0]).join("").slice(0, 2))}</span>
         <span><b>${esc(who)}</b><i class="slk-pres">Active</i></span>
@@ -393,7 +397,7 @@ function slackNudge(key, idx) {
     if (r) r.innerHTML = `<span class="slk-react">👀 1</span>`;
     const stamp = new Date().toLocaleString("en-US",
       { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
-    try { localStorage.setItem(`rp-nudge:${key}:${idx}`, stamp); } catch (e) {}
+    try { localStorage.setItem(`bm-nudge:${key}:${idx}`, stamp); } catch (e) {}
   }, 1900);
 }
 
@@ -402,7 +406,7 @@ function slackNudge(key, idx) {
    ========================================================= */
 function sigBlock(key, roleId, caption) {
   let signed = "";
-  try { signed = localStorage.getItem("rp-sig:" + key) || ""; } catch (e) {}
+  try { signed = localStorage.getItem("bm-sig:" + key) || ""; } catch (e) {}
   const persona = PERSONAS.find((p) => p.id === roleId);
   const me = currentPersona();
   const mine = me && me.id === roleId;
@@ -423,7 +427,7 @@ function signDoc(key, roleId) {
   const persona = PERSONAS.find((p) => p.id === roleId);
   const when = new Date().toLocaleString("en-US",
     { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" });
-  try { localStorage.setItem("rp-sig:" + key, `${persona ? persona.name : roleId}|${when}`); } catch (e) {}
+  try { localStorage.setItem("bm-sig:" + key, `${persona ? persona.name : roleId}|${when}`); } catch (e) {}
   window.location.reload();
 }
 
@@ -474,7 +478,7 @@ function effectiveRate(billableAssets, schedule) {
    ========================================================= */
 function disclosure(extra) {
   return `<div class="rp-disc">
-    <b>Demonstration environment.</b> Rosemont Partners, LLC is a fictional firm. Every household, account,
+    <b>Demonstration environment.</b> Blackmont Advisors is a fictional firm. Every household, account,
     holding, fund, manager, person, document and figure shown here is synthetic and generated for illustration.
     Index and benchmark names are real; the levels and returns attached to them are not. Nothing in this portal
     is investment, tax or legal advice.${extra ? " " + extra : ""}
@@ -494,7 +498,7 @@ function panel(title, body, opts = {}) {
     ${body}</section>`;
 }
 function gate(title, msg) {
-  return `<div class="rp-gate"><b>${esc(title)}</b>${esc(msg)}</div>`;
+  return `<div class="bm-gate"><b>${esc(title)}</b>${esc(msg)}</div>`;
 }
 /* Deterministic pseudo-random from a string seed — used everywhere so
    the demo shows the same numbers on every load and every machine. */
@@ -523,7 +527,7 @@ function boot(opts, fn) {
     fn(app);
   } catch (e) {
     if (typeof console !== "undefined") console.error(e);
-    app.innerHTML = `<div class="rp-gate"><b>This page could not be rendered</b>
+    app.innerHTML = `<div class="bm-gate"><b>This page could not be rendered</b>
       ${esc(e && e.message ? e.message : String(e))}</div>` + disclosure();
   }
 }

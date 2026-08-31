@@ -1,5 +1,5 @@
 /* =========================================================
-   ROSEMONT BRAIN
+   BLACKMONT BRAIN
    Floating assistant, present on every page. Answers are
    generated client-side from the live household, portfolio
    and fund data, so nothing it says can drift from what the
@@ -171,13 +171,13 @@
   /* ---- UI ---- */
   var fab = document.createElement("button");
   fab.className = "rb-fab";
-  fab.setAttribute("aria-label", "Open the Rosemont Brain");
+  fab.setAttribute("aria-label", "Open the Blackmont Brain");
   fab.innerHTML = MARK;
 
   var panel = document.createElement("div");
   panel.className = "rb-panel";
   panel.innerHTML =
-    '<div class="rb-head"><div class="t"><span class="dot"></span>Rosemont Brain</div>'
+    '<div class="rb-head"><div class="t"><span class="dot"></span>Blackmont Brain</div>'
     + '<div class="s">Reads the live portfolio data &middot; '
     + '<a href="/wealthmanagement/brain/">Open the full page</a></div></div>'
     + '<div class="rb-disc">Demonstration output, generated from synthetic data. Not advice.</div>'

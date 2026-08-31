@@ -87,7 +87,7 @@ function render() {
         <div class="rp-doc-head">
           ${RP_MARK_SVG(52)}
           <div style="flex:1">
-            <div class="word">ROSEMONT <span>PARTNERS</span></div>
+            <div class="word">BLACKMONT <span>ADVISORS</span></div>
             <div class="sub">Private Wealth Management</div>
             <div class="big-title">Quarterly Report</div>
             <div class="subtitle">${esc(h.name)} &middot; ${esc(RP.quarter)} &middot; as of ${fmtDate(RP.asOf)}</div>
@@ -129,7 +129,7 @@ function render() {
         ${rpSections.fees ? `<h3 class="sect">Fee disclosure</h3>
         <p>Your annual advisory fee is ${fmt$(annualFee(h.mv))}, an effective rate of
         ${fmtBps(effectiveRate(h.mv) * 100)} on ${fmt$(h.mv)} of billable assets, billed quarterly in arrears
-        under the tiered schedule in your advisory agreement. Rosemont Partners receives no commissions, no
+        under the tiered schedule in your advisory agreement. Blackmont Advisors receives no commissions, no
         revenue sharing and no compensation from any product sponsor. Returns shown above are net of this
         fee.</p>` : ""}
 
@@ -138,7 +138,7 @@ function render() {
         fees unless stated otherwise. The blended benchmark is the weighted return of the market index behind
         each asset class in your investment policy statement, rebalanced monthly. Alternative investments are
         valued on the most recent available marks, which lag public markets. This report is a demonstration
-        environment: Rosemont Partners is a fictional firm and every figure is synthetic.</p>` : ""}
+        environment: Blackmont Advisors is a fictional firm and every figure is synthetic.</p>` : ""}
 
         <div style="margin-top:28px;display:flex;gap:36px;flex-wrap:wrap">
           ${sigBlock("report-sig-" + rpHh, "advisor1", "Adviser of record")}

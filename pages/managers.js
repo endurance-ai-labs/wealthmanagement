@@ -93,7 +93,7 @@ function render() {
         <div class="rp-doc-head">
           ${RP_MARK_SVG(52)}
           <div style="flex:1">
-            <div class="word">ROSEMONT <span>PARTNERS</span></div>
+            <div class="word">BLACKMONT <span>ADVISORS</span></div>
             <div class="sub">Investment Research</div>
             <div class="big-title">Manager Due Diligence</div>
             <div class="subtitle">${esc(m.name)} &middot; prepared ${fmtDate(RP.asOf)}</div>
@@ -103,7 +103,7 @@ function render() {
 
         <h3 class="sect">Firm</h3>
         <p>${esc(m.name)} was founded in ${m.founded} and is headquartered in ${esc(m.hq)}. The firm is
-        ${esc(m.ownership.toLowerCase())} and manages ${fmtM(m.firmAum * 1e6)}. Rosemont currently allocates
+        ${esc(m.ownership.toLowerCase())} and manages ${fmtM(m.firmAum * 1e6)}. Blackmont currently allocates
         ${fmt$(heldValue)} of client capital across ${funds.length}
         ${funds.length === 1 ? "strategy" : "strategies"}, representing
         ${fmtPct((heldValue / FIRM.detailedAum) * 100, 1)} of the detailed book and well inside the 20% manager

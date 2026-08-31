@@ -1,5 +1,5 @@
 /* =========================================================
-   Rosemont Partners — page smoke test
+   Blackmont Advisors — page smoke test
    Loads every page script in a jsdom-free sandbox alongside
    the data layer and asserts each one renders without
    throwing. Catches the temporal-dead-zone and undefined-
@@ -52,10 +52,10 @@ function makeDom() {
 }
 
 let failed = 0, ran = 0;
-console.log("\nRosemont Partners — page smoke test\n" + "-".repeat(66));
+console.log("\nBlackmont Advisors — page smoke test\n" + "-".repeat(66));
 
 for (const role of ROLES) {
-  const store = { "rp-role": role, "rp-mode": role === "client" ? "client" : "internal" };
+  const store = { "bm-role": role, "bm-mode": role === "client" ? "client" : "internal" };
   const results = [];
 
   for (const page of PAGES) {

@@ -1,5 +1,5 @@
 /* =========================================================
-   ROSEMONT BRAIN — full page
+   BLACKMONT BRAIN — full page
    The same engine as the floating assistant, with the data
    it reads laid out so nobody has to take it on trust.
    ========================================================= */
@@ -23,7 +23,7 @@ boot({ subtitle: "Private Wealth Portal" }, function (app) {
   ];
 
   app.innerHTML = `
-  ${toolbar("Rosemont Brain",
+  ${toolbar("Blackmont Brain",
     `<span class="demo-chip mut">Reads live portal data</span>${srcChip("brain")}`)}
 
   <div class="demo-grid demo-two">
