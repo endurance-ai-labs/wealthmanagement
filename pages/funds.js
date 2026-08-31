@@ -46,6 +46,13 @@ function renderFunds(keepFocus) {
     ${opts.map((o) => `<option value="${esc(o[0])}" ${o[0] === val ? "selected" : ""}>${esc(o[1])}</option>`).join("")}</select>`;
 
   $("#app").innerHTML = `
+  ${researchConsole({
+    title: "Research console",
+    kinds: ["Fund", "Manager", "Asset class"],
+    addKinds: ["Fund", "Share class", "Strategy", "Company"],
+    placeholder: "Search funds, managers, strategies, vehicles…",
+  })}
+
   ${toolbar("Fund Research",
     `${sel("ac", fnAc, [["All", "All asset classes"]].concat(ASSET_CLASSES.map((a) => [a.id, a.label])))}
      ${sel("veh", fnVeh, [["All", "All vehicles"]].concat(VEHICLES.map((v) => [v.id, v.label])))}
@@ -126,6 +133,8 @@ function renderFunds(keepFocus) {
       ladders through interval funds, buyout partnerships, structured notes and insurance-dedicated wrappers.
       Qualification is checked against the registration before any allocation is permitted.</div>`)}
   </div>
+
+  ${coverageQueue()}
 
   ${disclosure("Fund and manager names are invented. Attaching fabricated performance to a real fund would be misleading, so the universe is fictional end to end.")}`;
 

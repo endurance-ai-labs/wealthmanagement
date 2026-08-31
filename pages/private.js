@@ -35,6 +35,13 @@ function render() {
   cs.forEach((c) => { vintages[c.vintage] = (vintages[c.vintage] || 0) + c.commitment; });
 
   $("#app").innerHTML = `
+  ${researchConsole({
+    title: "Research console",
+    kinds: ["Fund", "Manager", "Asset class"],
+    addKinds: ["Fund", "Manager", "Vintage", "Co-investment"],
+    placeholder: "Search private funds, managers, vintages…",
+  })}
+
   ${toolbar("Private Markets", srcChips("pa"))}
 
   <div class="demo-kpis">
@@ -120,6 +127,8 @@ function render() {
         </tbody>
       </table>`)}
   </div>
+
+  ${coverageQueue()}
 
   ${disclosure()}`;
 

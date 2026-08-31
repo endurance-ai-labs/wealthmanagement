@@ -82,7 +82,7 @@ for (const role of ROLES) {
 
     let err = null;
     try {
-      for (const f of CORE.concat(["js/nav.js"])) {
+      for (const f of CORE.concat(["js/nav.js", "js/research.js"])) {
         vm.runInContext(fs.readFileSync(path.join(ROOT, f), "utf8").replace(/^(const|let) /gm, "var "),
           sandbox, { filename: f });
       }

@@ -21,6 +21,13 @@ function render() {
   const review = FUNDS.filter((f) => f.status === "Under Review");
 
   $("#app").innerHTML = `
+  ${researchConsole({
+    title: "Research console",
+    kinds: ["Asset class", "House view", "Benchmark", "Fund"],
+    addKinds: ["Asset class", "Agenda item", "Sector", "Fund"],
+    placeholder: "Search asset classes, house views, benchmarks…",
+  })}
+
   ${toolbar("Investment Committee",
     `<span class="demo-chip mut">Next meeting 16 September 2026</span>${srcChips("pa")}`)}
 
@@ -130,6 +137,8 @@ function render() {
         <li>Q4 capital market assumptions: first read</li>
       </ul>`)}
   </div>
+
+  ${coverageQueue()}
 
   ${disclosure()}`;
 }

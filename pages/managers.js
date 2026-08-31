@@ -24,6 +24,13 @@ function render() {
   const wf = DD_WORKFLOW.filter((d) => d.manager === m.name);
 
   $("#app").innerHTML = `
+  ${researchConsole({
+    title: "Research console",
+    kinds: ["Manager", "Fund"],
+    addKinds: ["Manager", "Strategy", "Fund"],
+    placeholder: "Search managers and their strategies…",
+  })}
+
   ${toolbar("Manager Due Diligence",
     `<select class="pa-btn" onchange="mgPick(this.value)">
        ${MANAGERS.map((x) => `<option value="${x.id}" ${x.id === m.id ? "selected" : ""}>${esc(x.name)}</option>`).join("")}
@@ -136,6 +143,8 @@ function render() {
         </div>
       </div>`, { k: "Committee paper" })}
   </div>
+
+  ${coverageQueue()}
 
   ${disclosure("Every manager, strategy and finding on this page is invented.")}`;
 }

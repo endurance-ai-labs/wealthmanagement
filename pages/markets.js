@@ -21,6 +21,13 @@ function renderMarkets() {
   rows.sort((x, y) => (y[mkCol] == null ? -1e9 : y[mkCol]) - (x[mkCol] == null ? -1e9 : x[mkCol]));
 
   $("#app").innerHTML = `
+  ${researchConsole({
+    title: "Research console",
+    kinds: ["Benchmark", "Asset class", "House view"],
+    addKinds: ["Sector", "Index", "Company", "Macro series"],
+    placeholder: "Search indices, sectors, asset classes, house views…",
+  })}
+
   ${toolbar("Global Markets",
     `<span class="demo-chip mut">As of ${fmtDate(MKT_ASOF)}</span>
      <select class="pa-btn" onchange="mkSort(this.value)">
@@ -158,6 +165,8 @@ function renderMarkets() {
       <div class="rp-note" style="margin-top:10px">Long-run monthly averages, shown because clients ask.
       We do not position on seasonality.</div>`)}
   </div>
+
+  ${coverageQueue()}
 
   ${disclosure("Benchmark names are real; every level and return attached to them is generated.")}`;
 

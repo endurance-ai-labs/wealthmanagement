@@ -222,7 +222,7 @@ function renderTopbar(opts = {}) {
       <a class="brand" href="${BASE}/" style="cursor:pointer;text-decoration:none">
         ${RP_MARK_SVG(30)}
         <div class="rp-brand-text">
-          <div class="rp-word">Blackmont <span>Partners</span></div>
+          <div class="rp-word">Blackmont <span>Advisors</span></div>
           <div class="rp-word-sub">${subtitle}</div>
         </div>
       </a>
