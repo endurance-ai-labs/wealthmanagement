@@ -1,5 +1,5 @@
 /* =========================================================
-   BLACKMONT ADVISORS — market data
+   ROSEMONT PARTNERS — market data
    90+ benchmarks across seven boards, the Treasury curve,
    credit spreads and the macro strip.
 
@@ -200,7 +200,7 @@ function _mkRand(seed) {
 function _expand(rows, board, hasAnalytics) {
   return rows.map((r) => {
     const [code, name, level, ytd, y1, y3, y5, y10, fwdPE, dy] = r;
-    const rnd = _mkRand("bm-mkt-" + code);
+    const rnd = _mkRand("rp-mkt-" + code);
     /* Annualised volatility implied by the asset's own YTD dispersion. */
     const vol = board === "fi" ? 4.5 : board === "fx" ? 7 : board === "commod" ? 22 : 15;
     const dVol = vol / Math.sqrt(252);

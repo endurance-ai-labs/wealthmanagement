@@ -1,5 +1,5 @@
 /* =========================================================
-   Blackmont Advisors — page smoke test
+   Rosemont Partners — page smoke test
    Loads every page script in a jsdom-free sandbox alongside
    the data layer and asserts each one renders without
    throwing. Catches the temporal-dead-zone and undefined-
@@ -54,10 +54,10 @@ function makeDom() {
 }
 
 let failed = 0, ran = 0;
-console.log("\nBlackmont Advisors — page smoke test\n" + "-".repeat(66));
+console.log("\nRosemont Partners — page smoke test\n" + "-".repeat(66));
 
 for (const role of ROLES) {
-  const store = { "bm-role": role, "bm-mode": role === "client" ? "client" : "internal" };
+  const store = { "rp-role": role, "rp-mode": role === "client" ? "client" : "internal" };
   const results = [];
 
   for (const page of PAGES) {
@@ -85,12 +85,16 @@ for (const role of ROLES) {
 
     let err = null;
     try {
-      for (const f of CORE.concat(["js/nav.js", "js/research.js"])) {
-        vm.runInContext(fs.readFileSync(path.join(ROOT, f), "utf8").replace(/^(const|let) /gm, "var "),
-          sandbox, { filename: f });
-      }
-      vm.runInContext(fs.readFileSync(path.join(ROOT, "pages", page), "utf8").replace(/^(const|let) /gm, "var "),
-        sandbox, { filename: "pages/" + page });
+      /* Concatenate rather than running each file separately. A browser gives
+         every classic script one shared global lexical scope; node's vm gives
+         each script its own, and the const-to-var rewrite that used to bridge
+         that gap also destroyed temporal-dead-zone semantics, which is exactly
+         the bug class these pages keep hitting. One program preserves both. */
+      const files = CORE.concat(["js/nav.js", "js/research.js", "pages/" + page]);
+      const bundle = files
+        .map((f) => "\n/* ---- " + f + " ---- */\n" + fs.readFileSync(path.join(ROOT, f), "utf8"))
+        .join("\n");
+      vm.runInContext(bundle, sandbox, { filename: "bundle:" + page });
     } catch (e) {
       err = e.message;
     }
@@ -118,6 +122,36 @@ for (const role of ROLES) {
   if (!bad.length) console.log("    all pages rendered");
 }
 
+/* ---- static check ----
+   A top-level const or let declared after the boot() call is still in the
+   temporal dead zone when a render helper reads it. The runtime check above
+   only catches this when the role being tested reaches that code path, so
+   scan for it directly as well. */
 console.log("\n" + "-".repeat(66));
-if (failed) { console.log("\n  " + failed + " of " + ran + " page renders failed.\n"); process.exit(1); }
+let tdz = 0;
+for (const page of PAGES) {
+  const src = fs.readFileSync(path.join(ROOT, "pages", page), "utf8");
+  const at = src.indexOf("boot(");
+  if (at < 0) continue;
+  const after = src.slice(at);
+  const names = [];
+  const re = /^(?:const|let)\s+([A-Za-z_$][\w$]*)/gm;
+  let m;
+  while ((m = re.exec(after))) names.push({ name: m[1], at: m.index });
+  for (const d of names) {
+    if (new RegExp("\\b" + d.name + "\\b").test(after.slice(0, d.at))) {
+      console.log("  FAIL  " + page + ": '" + d.name + "' is read before it is declared");
+      tdz++;
+    }
+  }
+}
+console.log(tdz ? "  " + tdz + " temporal-dead-zone risk(s)"
+                : "  no constant is read before its declaration");
+
+console.log("\n" + "-".repeat(66));
+if (failed || tdz) {
+  console.log("\n  " + failed + " of " + ran + " page renders failed; "
+    + tdz + " temporal-dead-zone risk(s).\n");
+  process.exit(1);
+}
 console.log("\n  All " + ran + " page renders passed across " + ROLES.length + " roles.\n");

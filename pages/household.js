@@ -52,7 +52,7 @@ function renderHousehold() {
 
   $("#app").innerHTML = `
   ${toolbar(h.name,
-    `<span class="demo-chip mut">${esc(segLabel(h.segment))}</span>
+    `<span class="demo-chip mut">${esc(h.segment)}</span>
      <span class="demo-chip mut">${esc(h.tier)} service</span>
      ${drifted ? '<span class="demo-chip warn">Out of tolerance</span>' : '<span class="demo-chip ok">On target</span>'}
      ${srcChips("pa", "cust", "crm")}`)}
@@ -132,7 +132,7 @@ function hhOverview(h, w, r) {
         <dt>Last contact</dt><dd>${fmtDate(h.lastContact)}</dd>
         <dt>Policy last reviewed</dt><dd>${fmtDate(h.ipsReviewed)}</dd>
         <dt>Next review due</dt><dd>${h.ipsReview < RP.asOf
-          ? '<span class="bm-ret dn">' + fmtDate(h.ipsReview) + " &middot; past due</span>"
+          ? '<span class="rp-ret dn">' + fmtDate(h.ipsReview) + " &middot; past due</span>"
           : fmtDate(h.ipsReview)}</dd>
         <dt>Last rebalanced</dt><dd>${fmtDate(h.lastRebalance)} (${h.monthsSinceRebalance} months)</dd>
       </dl>`, { k: "Adviser view" })}
@@ -142,7 +142,7 @@ function hhOverview(h, w, r) {
 /* ---------------- Real world ---------------- */
 function hhWorld(h, w) {
   const sheet = [
-    ["Managed by Blackmont", h.mv, "Custodied and discretionary"],
+    ["Managed by Rosemont", h.mv, "Custodied and discretionary"],
     ["Held away", w.heldAwayTotal, "Reported for planning, not managed"],
     ["Property", w.propertyTotal, "Primary and other residences"],
     ["Liabilities", -w.debtTotal, "Mortgages and lines of credit"],
@@ -539,7 +539,7 @@ function hhPlanning(h, w) {
           <td><b>${esc(g.goal)}</b></td>
           <td>${pill(g.priority, g.priority === "Essential" ? "blue" : g.priority === "Important" ? "amber" : "gray")}</td>
           <td class="num">${fmt$(g.target)}</td><td class="num">${g.horizon} yrs</td>
-          <td class="num"><b class="bm-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
+          <td class="num"><b class="rp-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
         </tr>`).join("")}</tbody>
       </table>` : gate("No goals recorded", "Goals are set at the next planning session."),
       { k: "Planning", chips: srcChip("plan") })}

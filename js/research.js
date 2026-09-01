@@ -75,8 +75,8 @@ function researchIndex() {
 }
 
 /* ---------- what the person has looked up before ---------- */
-const RS_LEARN_KEY = "bm-learn";
-const RS_ADD_KEY = "bm-coverage";
+const RS_LEARN_KEY = "rp-learn";
+const RS_ADD_KEY = "rp-coverage";
 
 function rsLearnStore() {
   try { return JSON.parse(localStorage.getItem(RS_LEARN_KEY) || "{}"); } catch (e) { return {}; }

@@ -345,7 +345,7 @@ function clientHome() {
           <td><b>${esc(g.goal)}</b><div class="rp-note">Target ${fmtM(g.target)}</div></td>
           <td>${pill(g.priority, g.priority === "Essential" ? "blue" : g.priority === "Important" ? "amber" : "gray")}</td>
           <td class="num">${g.horizon} yrs</td>
-          <td class="num"><b class="bm-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
+          <td class="num"><b class="rp-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
         </tr>`).join("")}</tbody>
       </table>
       <div class="rp-note" style="margin-top:10px">Funded status is the probability-weighted value of assets

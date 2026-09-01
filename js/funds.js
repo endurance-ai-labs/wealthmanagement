@@ -1,5 +1,5 @@
 /* =========================================================
-   BLACKMONT ADVISORS — approved list, fund universe and
+   ROSEMONT PARTNERS — approved list, fund universe and
    manager due-diligence files.
 
    Every fund, strategy and manager here is INVENTED.
@@ -121,7 +121,7 @@ const FUND_ROWS = [
   ["F-002","Kestrel US Core Equity ETF","Kestrel Asset Management","USLC","ETF","Total US market beta at the lowest available cost","KUSE","2011-06-14",96400,0,0.02,0,"Approved",[4,5,4,5,5,5],[13.9,12.2,13.5,12.1,12.8],null],
   ["F-003","Northmoor Quality Growth Fund","Northmoor Investment Partners","USLC","MF","Concentrated quality growth, 28 to 34 names, high active share","NQGFX","1998-09-30",18600,25,0.62,0,"Approved",[5,5,4,4,3,4],[17.8,14.9,16.2,14.6,11.9],null],
   ["F-004","Brightwater US Dividend Value","Brightwater Advisors","USLC","ESMA","Dividend growth and free cash flow yield, 45 to 60 names","BWDV","2005-01-03",8900,500,0.45,0,"Approved",[4,4,4,4,4,4],[9.4,8.6,10.9,9.4,9.1],null],
-  ["F-005","Blackmont Direct Index — US Large Cap","Kestrel Asset Management","USLC","DIRIDX","Index replication in individual securities with continuous loss harvesting","BMDI","2019-04-01",1840,1000,0.20,0,"Approved",[4,5,4,5,5,4],[13.8,12.1,13.4,null,12.9],null],
+  ["F-005","Rosemont Direct Index — US Large Cap","Kestrel Asset Management","USLC","DIRIDX","Index replication in individual securities with continuous loss harvesting","RPDI","2019-04-01",1840,1000,0.20,0,"Approved",[4,5,4,5,5,4],[13.8,12.1,13.4,null,12.9],null],
   ["F-006","Corvine Concentrated Equity ETF","Corvine Global Investors","USLC","AETF","Active, 22 to 26 names, benchmark-agnostic","CCEQ","2020-02-11",3400,0,0.55,0,"Watch",[4,4,2,3,3,4],[8.9,7.1,11.2,null,10.4],null],
   ["F-007","Larkspur Buffered US Equity — September","Larkspur Capital Group","USLC","BETF","S&P 500 exposure with a 15% downside buffer over 12 months","LBSP","2021-09-20",1240,0,0.74,0,"Approved",[4,4,4,4,3,5],[9.1,8.4,null,null,8.8],null],
   ["F-008","Kestrel Covered Call Income ETF","Kestrel Asset Management","USLC","CCETF","Systematic index call overwriting for current income","KCCI","2017-05-08",6200,0,0.35,0,"Approved",[4,4,3,3,4,5],[10.2,9.1,10.4,null,9.6],null],
@@ -152,11 +152,11 @@ const FUND_ROWS = [
   ["F-025","Kestrel TIPS Index ETF","Kestrel Asset Management","CORE","ETF","Passive inflation-protected Treasury beta","KTIP","2008-11-03",22400,0,0.05,0,"Approved",[4,5,3,4,5,5],[6.0,3.1,2.0,2.3,2.8],null],
 
   /* --- Municipals --- */
-  ["F-026","Blackmont Municipal Ladder 1–15 Year","Halloway & Finch","MUNI","MSMA","Laddered high-grade municipals, customised to state of residence","BMML","2008-01-02",2840,500,0.25,0,"Approved",[5,5,4,5,5,5],[5.6,2.8,1.0,2.3,3.1],null],
+  ["F-026","Rosemont Municipal Ladder 1–15 Year","Halloway & Finch","MUNI","MSMA","Laddered high-grade municipals, customised to state of residence","RPML","2008-01-02",2840,500,0.25,0,"Approved",[5,5,4,5,5,5],[5.6,2.8,1.0,2.3,3.1],null],
   ["F-027","Halloway & Finch National Municipal Fund","Halloway & Finch","MUNI","MF","Intermediate national municipal, AA average quality","HFNMX","1984-05-01",18900,10,0.34,0,"Approved",[5,5,4,4,4,5],[5.4,2.6,0.9,2.2,4.1],null],
   ["F-028","Halloway & Finch High Yield Municipal","Halloway & Finch","MUNI","MF","Lower-rated and non-rated municipal credit","HFHMX","1998-03-02",7400,25,0.52,0,"Approved",[5,4,4,3,4,5],[9.1,5.2,2.5,4.0,4.6],null],
   ["F-029","Kestrel Short Municipal ETF","Kestrel Asset Management","MUNI","ETF","One to five year municipal beta","KSMU","2013-01-15",9600,0,0.07,0,"Approved",[4,5,3,4,5,5],[4.1,2.9,1.6,1.4,1.8],null],
-  ["F-030","Blackmont California Municipal SMA","Halloway & Finch","MUNI","MSMA","California state-specific ladder for high-bracket residents","BMCM","2011-06-01",1180,500,0.25,0,"Approved",[5,5,4,5,5,5],[5.5,2.7,0.9,2.2,2.8],null],
+  ["F-030","Rosemont California Municipal SMA","Halloway & Finch","MUNI","MSMA","California state-specific ladder for high-bracket residents","RPCM","2011-06-01",1180,500,0.25,0,"Approved",[5,5,4,5,5,5],[5.5,2.7,0.9,2.2,2.8],null],
   ["F-031","Ashford Municipal Unit Trust — Series 92","Ashford Capital Management","MUNI","UIT","Fixed portfolio of insured municipals, defined termination","AMUT92","2024-09-16",180,5,0.15,0,"Approved",[4,4,3,2,4,5],[5.1,null,null,null,4.8],null],
 
   /* --- Credit --- */
@@ -167,7 +167,7 @@ const FUND_ROWS = [
 
   /* --- Cash --- */
   ["F-036","Ashford Government Money Market","Ashford Capital Management","CASH","MMF","Government-only money market, daily liquidity","AGMXX","1982-06-01",84600,1,0.11,0,"Approved",[4,5,4,5,5,5],[4.6,4.4,2.8,1.8,2.4],null],
-  ["F-037","Blackmont Treasury Bill Ladder","Halloway & Finch","CASH","FSMA","Direct Treasury bill ladder for balances above $2M","BMTB","2022-01-04",940,2000,0.08,0,"Approved",[5,5,4,5,5,5],[4.8,4.6,null,null,4.4],null],
+  ["F-037","Rosemont Treasury Bill Ladder","Halloway & Finch","CASH","FSMA","Direct Treasury bill ladder for balances above $2M","RPTB","2022-01-04",940,2000,0.08,0,"Approved",[5,5,4,5,5,5],[4.8,4.6,null,null,4.4],null],
 
   /* --- Hedged strategies --- */
   ["F-038","Meridian Global Macro Fund, L.P.","Meridian Macro Advisers","HF","HFLP","Discretionary global macro across rates, FX and commodities","MGMLP","2011-01-01",4100,1000,1.50,20,"Watch",[2,3,2,3,2,4],[1.4,3.8,6.9,5.1,7.2],null],
@@ -209,7 +209,7 @@ const FUND_ROWS = [
   ["F-066","Fairhaven Registered Index-Linked Annuity","Fairhaven Insurance Advisors","USLC","ANN","Six-year RILA, 20% buffer, index-linked crediting","FH-RILA","2024-02-01",0,25,1.05,0,"Approved",[4,4,null,3,2,5],[null,null,null,null,6.4],null],
   ["F-067","Fairhaven Single Premium Immediate Annuity","Fairhaven Insurance Advisors","CASH","ANN","Life-contingent income, joint and survivor available","FH-SPIA","2023-01-01",0,100,0.00,0,"Approved",[4,4,null,3,3,5],[null,null,null,null,null],null],
   ["F-068","Fairhaven Private Placement Life Platform","Fairhaven Insurance Advisors","HF","ANN","Insurance-dedicated funds inside a PPLI wrapper","FH-PPLI","2022-06-01",0,2000,0.55,0,"Approved",[4,4,null,4,3,5],[null,null,null,null,8.2],null],
-  ["F-069","Blackmont Charitable Donor-Advised Fund","Ashford Capital Management","USLC","DAF","Granting vehicle invested in the household's own model","BMDAF","2009-01-01",412,5,0.25,0,"Approved",[5,5,4,5,5,5],[11.6,9.8,11.2,10.1,9.4],null],
+  ["F-069","Rosemont Charitable Donor-Advised Fund","Ashford Capital Management","USLC","DAF","Granting vehicle invested in the household's own model","RPDAF","2009-01-01",412,5,0.25,0,"Approved",[5,5,4,5,5,5],[11.6,9.8,11.2,10.1,9.4],null],
   ["F-070","Piedmont Reach Opportunity Zone Fund II, L.P.","Piedmont Reach Capital","RE","QOF","Qualified opportunity zone development, ten-year hold","PROZ2","2022-12-31",340,5000,1.50,15,"Watch",[3,3,2,3,3,3],[null,null,null,null,4.1],[2022,340,88,1.08,0.00,4.1]],
 ];
 
@@ -237,7 +237,7 @@ const FUNDS = FUND_ROWS.map((r) => {
   const [id, name, manager, ac, vehicle, strategy, code, inception,
          aum, min, mgmtFee, perfFee, status, scores, rets, priv] = r;
   const cls = AC[ac];
-  const rnd = _fRand("bm-fund-" + id);
+  const rnd = _fRand("rp-fund-" + id);
   const isPrivate = !!priv;
   const passive = ["IDX", "ETF", "DIRIDX", "CIT", "UIT"].indexOf(vehicle) >= 0;
 
@@ -329,7 +329,7 @@ const WATCH_NOTES = {
 
 /* ---- due-diligence workflow state ---- */
 const DD_WORKFLOW = FUNDS.filter((f) => !f.passive).slice(0, 22).map((f, i) => {
-  const rnd = _fRand("bm-dd-" + f.id);
+  const rnd = _fRand("rp-dd-" + f.id);
   const stages = ["Questionnaire", "Reference calls", "Background checks", "ADV & document review", "On-site visit", "Committee memo"];
   const done = f.status === "Under Review" ? 2 + Math.floor(rnd() * 2) : 6;
   return {

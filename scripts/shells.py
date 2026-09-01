@@ -8,7 +8,7 @@ BASE = "/wealthmanagement"
 
 PAGES = [
     # (directory, page script, <title>, topbar subtitle, og description)
-    ("",             "home",        "Blackmont Advisors — Private Wealth Portal", "Private Wealth Portal",
+    ("",             "home",        "Rosemont Partners — Private Wealth Portal", "Private Wealth Portal",
      "Client reporting, portfolio operations, global market research and firm governance in one governed system."),
     ("clients",      "clients",     "Client Book",                 "Private Wealth Portal", "A live view into every client's real world: family, career, property, assets held away and what is coming next."),
     ("households",   "households",  "Household Book",              "Private Wealth Portal", "Every household relationship, its assets, flows and service standing."),
@@ -33,8 +33,7 @@ PAGES = [
     ("compliance",   "compliance",  "Compliance",                  "Private Wealth Portal", "The regulatory register, personal trading, marketing and exam readiness."),
     ("operations",   "operations",  "Operations",                  "Private Wealth Portal", "Reconciliation breaks, transfers, corporate actions and onboarding."),
     ("team",         "team",        "Team & Capacity",             "Private Wealth Portal", "Adviser capacity, service standards, credentials and succession."),
-    ("crossborder", "crossborder", "Cross-Border Desk", "Portal", "Currency exposure, reporting status and multi-jurisdiction tax for households living abroad."),
-    ("brain",        "brain",       "Blackmont Brain",              "Private Wealth Portal", "Ask questions of the live portfolio, household and fund data."),
+    ("brain",        "brain",       "Rosemont Brain",              "Private Wealth Portal", "Ask questions of the live portfolio, household and fund data."),
 ]
 
 TPL = """<!DOCTYPE html>
@@ -42,16 +41,16 @@ TPL = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{title} &middot; Blackmont Advisors</title>
+<title>{title} &middot; Rosemont Partners</title>
 <meta name="description" content="{desc}">
-<meta property="og:site_name" content="Blackmont Advisors">
-<meta property="og:title" content="{title} &middot; Blackmont Advisors">
+<meta property="og:site_name" content="Rosemont Partners">
+<meta property="og:title" content="{title} &middot; Rosemont Partners">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-<link rel="icon" type="image/svg+xml" href="{base}/assets/brand/blackmont-mark.svg">
+<link rel="icon" type="image/svg+xml" href="{base}/assets/brand/rosemont-mark.svg">
 <link rel="stylesheet" href="{base}/css/theme.css">
 <link rel="stylesheet" href="{base}/css/demo.css">
-<link rel="stylesheet" href="{base}/css/blackmont.css">
+<link rel="stylesheet" href="{base}/css/rosemont.css">
 </head>
 <body>
 <div id="topbar"></div>

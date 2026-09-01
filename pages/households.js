@@ -37,12 +37,10 @@ function renderBook() {
   const scope = list.reduce((s, h) => s + h.mv, 0);
   const sel = (k, val, opts) => `<select class="pa-btn" onchange="hbSet('${k}',this.value)">
     ${opts.map((o) => `<option value="${esc(o)}" ${o === val ? "selected" : ""}>${esc(o)}</option>`).join("")}</select>`;
-  const selL = (k, val, opts) => `<select class="pa-btn" onchange="hbSet('${k}',this.value)">
-    ${opts.map((o) => `<option value="${esc(o)}" ${o === val ? "selected" : ""}>${esc(o === "All" ? "All segments" : segLabel(o))}</option>`).join("")}</select>`;
 
   $("#app").innerHTML = `
   ${toolbar("Household Book",
-    `${selL("seg", hbSeg, ["All", "UHNW", "HNW", "Emerging", "Institutional"])}
+    `${sel("seg", hbSeg, ["All", "UHNW", "HNW", "Emerging", "Institutional"])}
      ${sel("adv", hbAdvisor, ["All"].concat([...new Set(all.map((h) => h.advisor))].sort()))}
      ${sel("tier", hbTier, ["All"].concat([...new Set(all.map((h) => h.tier))]))}
      ${sel("cust", hbCustodian, ["All"].concat([...new Set(all.map((h) => h.custodian))]))}
@@ -84,7 +82,7 @@ function renderBook() {
           const drift = isDrifted(allocationOf(householdPositions(h.id)));
           const due = h.ipsReview < RP.asOf;
           return `<tr class="rp-click" onclick="location.href='/wealthmanagement/households/household/?id=${h.id}'">
-            <td><b>${esc(h.name)}</b><div class="rp-note">${esc(segLabel(h.segment))} &middot; since ${h.since.slice(0, 4)}</div></td>
+            <td><b>${esc(h.name)}</b><div class="rp-note">${esc(h.segment)} &middot; since ${h.since.slice(0, 4)}</div></td>
             <td class="dim">${esc(h.advisor)}</td>
             <td class="dim">${esc(h.modelName)}</td>
             <td class="num">${fmt$(h.mv)}</td>

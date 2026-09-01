@@ -25,7 +25,7 @@ function renderMarkets() {
     title: "Research console",
     kinds: ["Benchmark", "Asset class", "House view"],
     addKinds: ["Sector", "Index", "Company", "Macro series"],
-    placeholder: "Search indices, sectors, asset classes, house views…",
+    placeholder: "Search indices, sectors, asset classes, house views\u2026",
   })}
 
   ${toolbar("Global Markets",

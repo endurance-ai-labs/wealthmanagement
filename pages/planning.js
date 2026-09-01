@@ -15,7 +15,7 @@ boot({ subtitle: "Private Wealth Portal" }, function () {
 function loadScenario() {
   const d = Object.assign({}, MC_DEFAULTS);
   try {
-    const raw = JSON.parse(localStorage.getItem("bm-plan:" + plHh) || "null");
+    const raw = JSON.parse(localStorage.getItem("rp-plan:" + plHh) || "null");
     if (raw) Object.assign(d, raw);
   } catch (e) {}
   const h = HH[plHh], w = WORLD[plHh];
@@ -24,12 +24,12 @@ function loadScenario() {
   return d;
 }
 function saveScenario() {
-  try { localStorage.setItem("bm-plan:" + plHh, JSON.stringify(plState)); } catch (e) {}
+  try { localStorage.setItem("rp-plan:" + plHh, JSON.stringify(plState)); } catch (e) {}
   render();
 }
 function plSet(k, v) { plState[k] = isNaN(+v) ? v : +v; saveScenario(); }
 function plPick(id) { plHh = id; plState = loadScenario(); render(); }
-function plReset() { try { localStorage.removeItem("bm-plan:" + plHh); } catch (e) {} plState = loadScenario(); render(); }
+function plReset() { try { localStorage.removeItem("rp-plan:" + plHh); } catch (e) {} plState = loadScenario(); render(); }
 
 /* Deterministic Monte Carlo: 1,000 paths from a fixed seed, so the
    probability shown is the same on every load and every machine. */
@@ -39,7 +39,7 @@ function runMonteCarlo() {
   const vol = MODEL_RETURNS[plState.allocation || h.model].vol / 100;
   const years = Math.max(1, plState.longevity - (2026 - 1963));
   const infl = plState.inflation / 100;
-  const rnd = _rand("bm-mc-" + plHh + plState.spending + plState.longevity + plState.allocation + plState.inflation);
+  const rnd = _rand("rp-mc-" + plHh + plState.spending + plState.longevity + plState.allocation + plState.inflation);
   const paths = 1000;
   let success = 0;
   const bands = Array.from({ length: years + 1 }, () => []);
@@ -137,7 +137,7 @@ function render() {
           <td><b>${esc(g.goal)}</b></td>
           <td>${pill(g.priority, g.priority === "Essential" ? "blue" : g.priority === "Important" ? "amber" : "gray")}</td>
           <td class="num">${fmt$(g.target)}</td><td class="num">${g.horizon} yrs</td>
-          <td class="num"><b class="bm-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
+          <td class="num"><b class="rp-ret ${g.funded >= 1 ? "up" : "dn"}">${Math.round(g.funded * 100)}%</b></td>
           <td><div class="rp-track" style="height:12px"><i style="width:${Math.min(100, g.funded * 70)}%;
             background:${g.funded >= 1 ? "var(--color-green)" : "var(--color-amber)"}"></i>
             <u style="left:70%"></u></div></td>

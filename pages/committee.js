@@ -25,7 +25,7 @@ function render() {
     title: "Research console",
     kinds: ["Asset class", "House view", "Benchmark", "Fund"],
     addKinds: ["Asset class", "Agenda item", "Sector", "Fund"],
-    placeholder: "Search asset classes, house views, benchmarks…",
+    placeholder: "Search asset classes, house views, benchmarks\u2026",
   })}
 
   ${toolbar("Investment Committee",

@@ -1,5 +1,5 @@
 /* =========================================================
-   Blackmont Advisors — integrity check
+   Rosemont Partners — integrity check
    Loads the data layer outside the browser and asserts every
    tie-out rule from the build outline. Run before deploying:
 
@@ -56,7 +56,7 @@ function check(name, pass, detail) {
 const near = (a, b, tol) => Math.abs(a - b) <= (tol == null ? 1 : tol);
 const money = (n) => "$" + (n / 1e6).toFixed(1) + "M";
 
-console.log("\nBlackmont Advisors — data integrity\n" + "-".repeat(62));
+console.log("\nRosemont Partners — data integrity\n" + "-".repeat(62));
 
 /* --- the rules stated in the build outline --- */
 TIEOUTS.forEach((t) => check(t[0], t[1]));

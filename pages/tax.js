@@ -4,12 +4,15 @@
    charitable strategy and the estate structure.
    ========================================================= */
 
+/* Declared before boot(): a constant a render helper reads must exist before
+   the first render call, or it is still in the temporal dead zone. */
+const EXEMPTION_2026 = 14200000; /* per person, illustrative */
+
 var txHh = qs("hh") || (isExternal() ? CLIENT_HH : "HH-0001");
 
 boot({ subtitle: "Private Wealth Portal" }, function () { render(); });
 function txPick(id) { txHh = id; render(); }
 
-const EXEMPTION_2026 = 14200000; /* per person, illustrative */
 
 function render() {
   const h = HH[txHh], w = WORLD[txHh];

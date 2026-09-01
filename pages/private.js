@@ -39,7 +39,7 @@ function render() {
     title: "Research console",
     kinds: ["Fund", "Manager", "Asset class"],
     addKinds: ["Fund", "Manager", "Vintage", "Co-investment"],
-    placeholder: "Search private funds, managers, vintages…",
+    placeholder: "Search private funds, managers, vintages\u2026",
   })}
 
   ${toolbar("Private Markets", srcChips("pa"))}

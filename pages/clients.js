@@ -88,7 +88,7 @@ function renderClientBook(keepFocus) {
   app.innerHTML = `
   ${toolbar("Client Book",
     `${sel("seg", cbSeg, [["All", "All segments"]].concat(
-        ["UHNW", "HNW", "Emerging", "Institutional"].map((s) => [s, segLabel(s)])), "cbSetSeg")}
+        ["UHNW", "HNW", "Emerging", "Institutional"].map((s) => [s, s])), "cbSetSeg")}
      ${sel("adv", cbAdvisor, [["All", "All advisers"]].concat(advisors.map((a) => [a, a])), "cbSetAdvisor")}
      ${sel("sort", cbSort, [["assets", "Sort: assets"], ["networth", "Sort: net worth"],
         ["attention", "Sort: needs attention"], ["contact", "Sort: least recent contact"],
@@ -147,7 +147,7 @@ function cbCard(h) {
         linear-gradient(135deg, ${tone[1]}, ${tone[0]})">
       <span class="mono">${esc(initials)}</span>
       <span style="text-align:right;color:rgba(244,242,237,.82);font-size:10px;letter-spacing:.12em;text-transform:uppercase">
-        ${esc(segLabel(h.segment))}<br>
+        ${esc(h.segment)}<br>
         <span style="font-size:9.5px;color:rgba(244,242,237,.6)">${esc(h.tier)} service</span>
       </span>
     </div>
