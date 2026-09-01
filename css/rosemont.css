@@ -842,3 +842,34 @@ a.rp-note, .rp-note a { padding: 12px 0; }
 
 .section-subnav-item, .demo-src, .demo-chip, .rp-note a, a.rp-note,
 .rs-learned, .rp-drift { border-radius: 0 !important; }
+
+/* ---- Document viewer --------------------------------------------------
+   Opening a document from the vault renders it in full, from the same
+   records the pages read. Square, no shadow, per the house rules. */
+.dv-ov { position: fixed; inset: 0; z-index: 6000; background: rgba(10,12,16,.55);
+  display: flex; align-items: flex-start; justify-content: center; padding: 3vh 16px; overflow: auto; }
+.dv-sheet { background: var(--card); border: 1px solid var(--border); width: 100%; max-width: 860px;
+  display: flex; flex-direction: column; max-height: 94vh; }
+.dv-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--color-bg-3);
+  font-size: 12.5px; color: var(--color-cloud-whisper); flex-wrap: wrap; }
+.dv-bar b { font-weight: 700; }
+.dv-bar-actions { display: flex; gap: 8px; }
+.dv-bar .pa-btn { cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 650;
+  padding: 0 14px; min-height: 44px; border: 1px solid var(--border);
+  background: var(--card); color: var(--color-cloud-whisper); }
+.dv-bar .pa-btn:hover { border-color: var(--color-blue); color: var(--color-blue); }
+.dv-scroll { overflow: auto; padding: 20px; }
+.dv-scroll .rp-doc { margin: 0; }
+.dv-log { margin-top: 22px; padding-top: 12px; border-top: 1px solid #e3e6ea;
+  font-size: 11px; color: #5b6472; }
+.dv-log b { color: #2a3442; }
+/* A document row invites a click. */
+tr.dv-open { cursor: pointer; }
+tr.dv-open:hover td { background: var(--color-blue-pale); }
+@media print {
+  .dv-ov { position: static; background: none; padding: 0; overflow: visible; }
+  .dv-sheet { max-width: none; max-height: none; border: 0; }
+  .dv-bar, .dv-log { display: none !important; }
+  body > *:not(.dv-ov) { display: none !important; }
+}

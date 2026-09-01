@@ -55,7 +55,8 @@ function render(keepFocus) {
       <table class="demo-tbl">
         <thead><tr><th>Document</th>${isExternal() ? "" : "<th>Household</th>"}<th>Category</th>
           <th>Period</th><th>Date</th><th>Retention</th><th>Status</th><th class="num">Views</th></tr></thead>
-        <tbody>${list.slice(0, 400).map((d) => `<tr>
+        <tbody>${list.slice(0, 400).map((d) => `<tr class="dv-open" onclick="openDoc('${d.id}')" tabindex="0"
+          onkeydown="if(event.key==='Enter'){openDoc('${d.id}')}">
           <td><b>${esc(d.type)}</b></td>
           ${isExternal() ? "" : `<td class="dim">${esc(d.hhName)}</td>`}
           <td class="dim">${esc(d.category)}</td>
@@ -63,7 +64,7 @@ function render(keepFocus) {
           <td>${fmtDateShort(d.date)}</td>
           <td class="dim">${esc(d.retention)}</td>
           <td>${statusPill(d.status)}</td>
-          <td class="num">${d.accessed}</td></tr>`).join("")}</tbody>
+          <td class="num">${dvCount(d)}</td></tr>`).join("")}</tbody>
       </table>
     </div>
     <div class="rp-note" style="margin-top:10px">Retention is set by document class, not by preference. Nothing

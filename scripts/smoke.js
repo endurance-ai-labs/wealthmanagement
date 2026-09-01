@@ -90,7 +90,7 @@ for (const role of ROLES) {
          each script its own, and the const-to-var rewrite that used to bridge
          that gap also destroyed temporal-dead-zone semantics, which is exactly
          the bug class these pages keep hitting. One program preserves both. */
-      const files = CORE.concat(["js/nav.js", "js/research.js", "pages/" + page]);
+      const files = CORE.concat(["js/nav.js", "js/research.js", "js/docviewer.js", "pages/" + page]);
       const bundle = files
         .map((f) => "\n/* ---- " + f + " ---- */\n" + fs.readFileSync(path.join(ROOT, f), "utf8"))
         .join("\n");

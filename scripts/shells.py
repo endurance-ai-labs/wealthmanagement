@@ -65,6 +65,7 @@ TPL = """<!DOCTYPE html>
 <script src="{base}/js/world.js"></script>
 <script src="{base}/js/nav.js"></script>
 <script src="{base}/js/research.js"></script>
+<script src="{base}/js/docviewer.js"></script>
 <script src="{base}/vendor/chart.umd.min.js"></script>
 <script src="{base}/js/brain.js" defer></script>
 <script src="{base}/pages/{page}.js"></script>

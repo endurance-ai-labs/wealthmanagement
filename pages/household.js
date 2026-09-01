@@ -571,10 +571,11 @@ function hhDocuments(h) {
       <table class="demo-tbl">
         <thead><tr><th>Document</th><th>Category</th><th>Period</th><th>Date</th>
           <th>Status</th><th class="num">Views</th></tr></thead>
-        <tbody>${docs.map((d) => `<tr>
+        <tbody>${docs.map((d) => `<tr class="dv-open" onclick="openDoc('${d.id}')" tabindex="0"
+          onkeydown="if(event.key==='Enter'){openDoc('${d.id}')}">
           <td><b>${esc(d.type)}</b></td><td>${esc(d.category)}</td>
           <td>${esc(d.period)}</td><td>${fmtDateShort(d.date)}</td>
-          <td>${statusPill(d.status)}</td><td class="num">${d.accessed}</td>
+          <td>${statusPill(d.status)}</td><td class="num">${dvCount(d)}</td>
         </tr>`).join("")}</tbody>
       </table>
     </div>
