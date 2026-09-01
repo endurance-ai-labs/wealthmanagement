@@ -28,18 +28,33 @@ function firmHome() {
   const scopeAum = book.reduce((s, h) => s + h.mv, 0);
   const scopeRevenue = book.reduce((s, h) => s + annualFee(h.mv), 0);
 
+  /* Trailing series for the headline figures. These are derived from the
+     roll-forward and the market path, not invented: assets are walked from the
+     beginning-of-year balance through the same monthly returns the portfolios
+     earned, and revenue follows assets through the fee schedule. Where no real
+     series exists — a household count, a point-in-time exception count — the
+     tile carries no sparkline rather than a decorative one. */
+  const ytdPath = (function () {
+    const r = MODEL_RETURNS.BAL.monthly.slice(-YTD_MONTHS);
+    const flowPerMonth = ROLLFORWARD.nna / YTD_MONTHS;
+    let v = ROLLFORWARD.begin;
+    return r.map((m) => { v = v * (1 + m / 100) + flowPerMonth; return Math.round(v); });
+  })();
+  const nnaPath = ytdPath.map((_, i) => Math.round((ROLLFORWARD.nna / YTD_MONTHS) * (i + 1)));
+  const revPath = ytdPath.map((v) => Math.round(v * FIRM.blendedFee));
+
   /* Headline figures switch between the whole firm and the signed-in
      adviser's own book, so a wealth adviser never sees firm economics. */
   const kpis = firmWide ? [
-    ["Discretionary AUM", fmtM(FIRM.aum), ret((ROLLFORWARD.end / ROLLFORWARD.begin - 1) * 100, 1).replace(/<[^>]+>/g, "") + " year to date", "up"],
-    ["Advisory-only assets", fmtM(FIRM.aua), "Held-away and reporting-only", ""],
-    ["Net new assets, YTD", fmtM(ROLLFORWARD.nna), fmtPct(ROLLFORWARD.organicGrowth * 100, 1) + " organic growth", ROLLFORWARD.nna > 0 ? "up" : "dn"],
+    ["Assets under management", fmtM(FIRM.aum), ret((ROLLFORWARD.end / ROLLFORWARD.begin - 1) * 100, 1).replace(/<[^>]+>/g, "") + " year to date", "up", ytdPath],
+    ["Advisory-only assets", fmtM(FIRM.aua), "Held away, reported not managed", ""],
+    ["Net new assets, YTD", fmtM(ROLLFORWARD.nna), fmtPct(ROLLFORWARD.organicGrowth * 100, 1) + " organic growth", ROLLFORWARD.nna > 0 ? "up" : "dn", nnaPath],
     ["Households", FIRM.households.toLocaleString(), "Average " + fmtM(FIRM.avgRelationship), ""],
-    can("revenue") ? ["Revenue run-rate", fmtM(FIRM.revenue), fmtBps(FIRM.blendedFee * 100) + " blended", ""]
+    can("revenue") ? ["Revenue run-rate", fmtM(FIRM.revenue), fmtBps(FIRM.blendedFee * 100) + " blended", "", revPath]
                    : ["Client retention", fmtPct(RP.targets.retention * 100, 1), "Trailing twelve months", "up"],
-    ["Households out of tolerance", String(driftedHouseholds().length), "Of 40 monitored in detail", driftedHouseholds().length ? "dn" : "up"],
+    ["Households out of tolerance", String(driftedHouseholds().length), "Of " + HOUSEHOLDS.length + " monitored in detail", ""],
   ] : [
-    ["Assets under advice", fmtM(scopeAum), book.length + " households", ""],
+    ["Assets under management", fmtM(scopeAum), book.length + " households", ""],
     ["Average relationship", fmtM(scopeAum / (book.length || 1)), bookLabel(), ""],
     ["Net flows, YTD", fmtM(book.reduce((s, h) => s + h.ytdFlow, 0)), "Contributions less withdrawals", ""],
     ["Reviews past due", String(book.filter((h) => h.ipsReview < RP.asOf).length), "Annual IPS review dates", ""],
@@ -53,6 +68,7 @@ function firmHome() {
 
   <div class="demo-kpis">
     ${kpis.map((k) => `<div class="demo-kpi">
+      ${k[4] ? `<span class="spark">${sparkSVG(k[4], { w: 62, h: 22, color: "var(--color-blue)" })}</span>` : ""}
       <div class="v">${k[1]}</div><div class="l">${esc(k[0])}</div>
       <div class="s"><span class="${k[3]}">${esc(k[2])}</span></div></div>`).join("")}
   </div>

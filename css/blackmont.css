@@ -683,3 +683,62 @@ a.rp-note, .rp-note a { display: inline-block; padding: 5px 0; }
 .rp-quote { min-width: 0; }
 .rp-quote .n { min-width: 0; overflow-wrap: anywhere; }
 .rp-quote .lv { white-space: nowrap; }
+
+/* ---- KPI band -------------------------------------------------------
+   The headline figures are the first thing anyone reads, so the number
+   carries the tile and everything else gets out of its way: a quieter,
+   smaller label, a delta that states its own direction, and a hairline
+   in the brand colour along the top of the band. Squared corners and no
+   shadows, per the house standard. */
+.demo-kpis {
+  border-radius: 0;
+  border-top: 2px solid var(--color-blue);
+  margin: 18px 0 26px;
+}
+
+.demo-kpi {
+  position: relative;
+  padding: 17px 18px 16px;
+  transition: background .14s ease;
+}
+/* A brand hairline that only appears on the tile under the pointer. */
+.demo-kpi::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+  background: var(--rp-claret); opacity: 0; transition: opacity .14s ease;
+}
+.demo-kpi:hover { background: var(--color-bg-3); }
+.demo-kpi:hover::before { opacity: 1; }
+
+/* The figure. Larger, tighter, and tabular so columns of digits line up. */
+.demo-kpi .v {
+  font-size: 26px; font-weight: 700; letter-spacing: -0.6px; line-height: 1.05;
+  font-variant-numeric: tabular-nums; display: flex; align-items: baseline; gap: 7px;
+}
+.demo-kpi .v small { font-size: 12.5px; letter-spacing: 0; }
+
+/* The label steps back so it frames the figure rather than competing. */
+.demo-kpi .l {
+  font-family: var(--font-mono); font-size: 8.5px; font-weight: 600;
+  letter-spacing: 0.18em; margin-top: 9px; color: var(--color-slate-hint);
+}
+
+/* The supporting line, separated by a hairline so the tile reads in two parts. */
+.demo-kpi .s {
+  font-size: 11px; margin-top: 9px; padding-top: 8px;
+  border-top: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
+}
+/* A direction marker, so a change reads without relying on colour alone. */
+.demo-kpi .s .up::before { content: '▲ '; font-size: 8px; vertical-align: 1px; }
+.demo-kpi .s .dn::before { content: '▼ '; font-size: 8px; vertical-align: 1px; }
+.demo-kpi .s .up, .demo-kpi .s .dn { font-weight: 650; }
+
+/* An optional trailing series, drawn only where a real one exists. */
+.demo-kpi .spark { position: absolute; right: 14px; top: 15px; width: 62px; height: 22px; opacity: .55; }
+.demo-kpi:hover .spark { opacity: .9; }
+@media (max-width: 1100px) { .demo-kpi .spark { display: none; } }
+
+@media (max-width: 640px) {
+  .demo-kpi { padding: 14px 14px 13px; }
+  .demo-kpi .v { font-size: 22px; }
+}
