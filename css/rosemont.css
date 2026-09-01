@@ -741,3 +741,104 @@ a.rp-note, .rp-note a { display: inline-block; padding: 5px 0; }
   .demo-kpi { padding: 14px 14px 13px; }
   .demo-kpi .v { font-size: 22px; }
 }
+
+
+/* =======================================================================
+   ENDURANCE/UI ALIGNMENT
+   endurance-ui-library-and-agent.vercel.app
+
+   The library states the house rules plainly: no cards, no shadows, no
+   rounded corners, with the Endurance Pill as the only rounded element;
+   44px touch targets; and the token vocabulary below. This layer brings
+   the portal onto that spec. It is last in the cascade so it wins.
+   ======================================================================= */
+
+/* ---- "Use the tokens that exist" ----------------------------------------
+   The library's vocabulary, mapped onto the portal's own scale so a component
+   lifted from the registry drops in without translation. */
+:root {
+  --background: var(--color-bg);
+  --foreground: var(--color-cloud-whisper);
+  --card:       var(--color-bg-2);
+  --border:     var(--color-border);
+  --muted:      var(--color-text-muted);
+  --radius:     0;
+}
+
+/* ---- No rounded corners ------------------------------------------------
+   Every surface is square. The pill is the single exception the system
+   allows, so it keeps its radius. */
+.demo-panel, .demo-kpis, .demo-kpi, .rp-scroll, .rp-scroll-auto, .demo-tbl-wrap,
+.rs-list, .rs-detail, .rs-field, .rs-input, .rs-ghost, .rp-in, .rp-doc,
+.rp-gate, .rp-disc, .appr-chain, .appr-step, .login-box, .login-card,
+.login-note, .demo-chip, .rp-track, .rp-track > i, .rp-bar, .rp-bar > i,
+.rp-dots i, .rs-grid, .rs-stat, .rp-board, .rp-quote, .nav-dropdown,
+.pa-toolbar select, .pa-btn, .demo-search, .rs-actions .pa-btn,
+.appr-act .pa-btn, .sig-btn, .slack-nudge, .rp-chart, button, input, select,
+textarea, .demo-prop, .demo-prop-visual {
+  border-radius: 0 !important;
+}
+/* The Endurance Pill: the system's sole rounded element. */
+.rp-pill, .nav-cta, .mode-toggle { border-radius: 999px !important; }
+
+/* ---- No shadows -------------------------------------------------------- */
+.demo-panel, .demo-kpi, .rs-list, .rs-detail, .nav-cta, .login-box,
+.login-card, .appr-act .pa-btn, .sig-btn, .demo-prop, .portal-topbar,
+.nav-dropdown, .rp-doc, .slk-card {
+  box-shadow: none !important;
+}
+.demo-prop:hover { transform: none; box-shadow: none !important; }
+.login-card:hover { transform: none; }
+
+/* ---- "No cards" --------------------------------------------------------
+   A panel is a ruled region, not a floating card: a hairline and a ground,
+   with no glass and no blur. */
+.demo-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+}
+
+/* ---- 44px touch targets ------------------------------------------------ */
+.pa-btn, .rs-actions .pa-btn, .appr-act .pa-btn, .sig-btn, .slack-nudge,
+.pa-toolbar select, .demo-search, .rs-input, .rp-in, .appr-reset,
+.mode-toggle button, .rp-tab {
+  min-height: 44px;
+}
+.pa-btn, .rs-actions .pa-btn, .appr-act .pa-btn, .sig-btn, .slack-nudge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding-top: 0; padding-bottom: 0;
+}
+.mode-toggle button { padding: 0 15px; }
+.rp-tab { padding-top: 0; padding-bottom: 0; }
+.demo-panel input[type="checkbox"] { width: 20px; height: 20px; }
+/* A link inside running text keeps its line box but gains a real hit area. */
+a.rp-note, .rp-note a { padding: 12px 0; }
+
+/* ---- "Type as caption, work as the picture" ----------------------------
+   Labels are mono captions and step back; the figure is the subject. */
+.demo-kpi .l, .rs-stat span, .demo-panel-head .k, .rp-eyebrow, .stat span {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ---- "One thought per band" -------------------------------------------
+   A band carries a single idea, so its separators are hairlines rather than
+   competing borders. */
+.demo-kpis { gap: 1px; background: var(--border); }
+
+/* Chrome the first pass missed: the mobile menu button, the assistant button
+   and the topbar icon buttons. */
+.nav-toggle, .rb-fab, .nav-icon-btn { box-shadow: none !important; }
+.nav-icon-btn, .nav-toggle { min-width: 44px; min-height: 44px; }
+.rb-fab { border-radius: 0 !important; width: 52px; height: 52px; }
+
+/* The last of it: avatars, the hamburger bars and the topbar icon button,
+   which carried their own radius and a fixed height. */
+.nav-user-avatar, .nav-toggle-bar, .avatar, .slk-ava, .rb-fab svg,
+.login-card .avatar { border-radius: 0 !important; }
+.portal-topbar .nav-icon-btn { height: 44px !important; min-width: 44px; }
+
+.section-subnav-item, .demo-src, .demo-chip, .rp-note a, a.rp-note,
+.rs-learned, .rp-drift { border-radius: 0 !important; }
